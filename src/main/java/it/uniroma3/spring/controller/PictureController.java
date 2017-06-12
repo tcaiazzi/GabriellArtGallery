@@ -1,5 +1,7 @@
 package it.uniroma3.spring.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
+import it.uniroma3.spring.model.Artist;
 import it.uniroma3.spring.model.Picture;
+import it.uniroma3.spring.service.ArtistService;
 import it.uniroma3.spring.service.PictureService;
 
 @Controller
@@ -19,11 +22,19 @@ public class PictureController {
 
 	@Autowired
 	private PictureService pictureService; 
+	@Autowired
+	private ArtistService artistService; 
+	
+	
 
 
 
 	@GetMapping("/picture")
-	public String showPictureInsert(Picture picture){
+	public String showPictureInsert(Picture picture,Model model){
+		
+		List<Artist> artists = artistService.getAll();
+		model.addAttribute("artists",artists);
+		
 		return "pictureInsert";
 	}
 

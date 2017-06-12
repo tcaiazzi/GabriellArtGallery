@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import it.uniroma3.spring.model.Artist;
 import it.uniroma3.spring.model.Picture;
 import it.uniroma3.spring.service.ArtistService;
@@ -37,6 +38,13 @@ public class ArtistController {
 			artistService.add(artist); 
 		}
 		return "artistInfo";
+	}
+	
+	@GetMapping("/artistsList")
+	public String showArtistsList( Model model){
+		List<Artist> artists = artistService.getAll();
+		model.addAttribute("artists", artists);
+		return "artistsList";
 	}
 	
 

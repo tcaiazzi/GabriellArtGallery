@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head></head>
+
+  <body>
+
+    <h1>Product list</h1>
+  
+    <table>
+      <tr>
+        <th>Artists List</th>
+   
+      </tr>
+      <tr th:each="artist : ${artists}">
+        <td th:text="'Name: ' + ${artist.name}"></td>
+        <td th:text="'Surname: ' + ${artist.surname}"></td>
+       
+      </tr>
+    </table>
+  
+    <p>
+      <a href="../index.html" th:href="@{/}">Return to home</a>
+    </p>
+
+  </body>
+
+</html>
