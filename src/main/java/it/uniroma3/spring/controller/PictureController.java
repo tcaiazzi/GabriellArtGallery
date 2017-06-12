@@ -24,7 +24,7 @@ public class PictureController {
 
 	@GetMapping("/picture")
 	public String showPictureInsert(Picture picture){
-		return "pictureInsert";
+		return "user/pictureInsert";
 	}
 
 
@@ -33,7 +33,7 @@ public class PictureController {
 			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			return "pictureInsert";
+			return "user/pictureInsert";
 		}
 		else {
 			model.addAttribute(picture);
