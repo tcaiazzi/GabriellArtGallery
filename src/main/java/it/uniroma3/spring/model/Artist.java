@@ -11,19 +11,31 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Artist {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
 	
+	private Long id;
+	@NotNull
+	@Size(min=1)
 	private String name;
+	@NotNull
+	@Size(min=1)
 	private String surname;
+	@NotNull
+	@Size(min=1)
 	private String nationality; 
+	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
+	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date deathDate;
 	
@@ -32,6 +44,62 @@ public class Artist {
 	
 	public Artist() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getNationality() {
+		return nationality;
+	}
+
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public Date getDeathDate() {
+		return deathDate;
+	}
+
+	public void setDeathDate(Date deathDate) {
+		this.deathDate = deathDate;
+	}
+
+	public Map<String, Picture> getPictures() {
+		return pictures;
+	}
+
+	public void setPictures(Map<String, Picture> pictures) {
+		this.pictures = pictures;
 	}
 
 
