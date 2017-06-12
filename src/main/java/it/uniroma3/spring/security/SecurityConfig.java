@@ -20,17 +20,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.jdbcAuthentication().dataSource(dataSource)
+		/*auth.jdbcAuthentication().dataSource(dataSource)
 		
 		.passwordEncoder(new BCryptPasswordEncoder())
 		.usersByUsernameQuery("SELECT username,password,1 FROM users where username=?")
-		.authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");
+		.authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username=?");*/
 	}
  
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http
+       /* http
         .authorizeRequests()
             .anyRequest().authenticated()
             .and()
@@ -39,6 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .permitAll()
             .and()
         .logout()
-           .permitAll();
+           .permitAll();*/
     }
 }

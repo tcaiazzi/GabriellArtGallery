@@ -11,19 +11,31 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Artist {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
 	
+	private Long id;
+	@NotNull
+	@Size(min=1)
 	private String name;
+	@NotNull
+	@Size(min=1)
 	private String surname;
+	@NotNull
+	@Size(min=1)
 	private String nationality; 
+	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
+	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date deathDate;
 	
@@ -89,8 +101,7 @@ public class Artist {
 	public void setPictures(Map<String, Picture> pictures) {
 		this.pictures = pictures;
 	}
-	
-	
+
 
 	
 	
