@@ -36,22 +36,22 @@ public class PictureController {
 		List<Artist> artists = artistService.getAll();
 		model.addAttribute("artists",artists);
 		
-		return "pictureInsert";
-	}
+		return "user/pictureInsert";
 
+	}
 
 	@PostMapping("/picture")
 	public String checkPictureInfo(@Valid @ModelAttribute Picture picture, 
 			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			return "pictureInsert";
+			return "user/pictureInsert";
 		}
 		else {
 			
 			model.addAttribute(picture);
 			pictureService.add(picture); 
 		}
-		return "pictureInfo";
+		return "user/pictureInfo";
 	}
 }
