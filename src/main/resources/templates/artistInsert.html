@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>New Picture</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form action="#" th:action="@{/artist}" th:object="${artist}" method="post">
+		<div>
+			<div>
+				<span th:text="#{label.name}">Name: </span> <span><input
+					type="text" th:field="*{name}" /></span> <span
+					th:if="${#fields.hasErrors('name')}" th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.surname}">Surname: </span> <span><input
+					type="text" th:field="*{surname}" /></span> <span
+					th:if="${#fields.hasErrors('surname')}"
+					th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.nationality}">Nationality: </span> <span><input
+					type="text" th:field="*{nationality}" /></span> <span
+					th:if="${#fields.hasErrors('nationality')}" th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.birthDate}">BirthDate: </span> <span><input
+					type="text" th:field="*{birthDate}" /></span> <span
+					th:if="${#fields.hasErrors('birthDate')}" th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<div>
+					<span th:text="#{label.deathDate}">DeathDate: </span> <span><input
+						type="text" th:field="*{deathDate}" /></span> <span
+						th:if="${#fields.hasErrors('deathDate')}" th:text="#{label.mandatory}">Error</span>
+				</div>
+				<div>
+					<span><button type="submit">Submit</button></span>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
