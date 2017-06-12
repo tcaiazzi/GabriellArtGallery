@@ -2,6 +2,7 @@ package it.uniroma3.spring.controller;
 
 import java.util.List;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,7 @@ public class PictureController {
 			return "pictureInsert";
 		}
 		else {
+			
 			model.addAttribute(picture);
 			pictureService.add(picture); 
 		}
