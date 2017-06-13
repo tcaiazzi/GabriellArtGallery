@@ -2,7 +2,7 @@ package it.uniroma3.spring.controller;
 
 import java.util.List;
 
-
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.WebRequest;
 
 import it.uniroma3.spring.model.Artist;
 import it.uniroma3.spring.model.Picture;
@@ -36,22 +37,39 @@ public class PictureController {
 		List<Artist> artists = artistService.getAll();
 		model.addAttribute("artists",artists);
 		
-		return "user/pictureInsert";
+		return "pictureInsert";
 
 	}
 
 	@PostMapping("/picture")
-	public String checkPictureInfo(@Valid @ModelAttribute Picture picture, 
-			BindingResult bindingResult, Model model) {
+	public String checkPictureInfo(@Valid @ModelAttribute Picture picture,
+			BindingResult bindingResult, Model model,HttpServletRequest request) {
 
 		if (bindingResult.hasErrors()) {
-			return "user/pictureInsert";
+			return "pictureInsert";
 		}
-		else {
+		else 
 			
 			model.addAttribute(picture);
 			pictureService.add(picture); 
-		}
-		return "user/pictureInfo";
+			System.out.print(picture.getArtist().getName());
+			
+			for (Picture pic : picture.getArtist().getPictures().values()){
+				System.out.println("--------"+pic.getTitle());
+			}
+			
+		return "pictureInfo";
+	}
+	
+	@GetMapping("/showPicture")
+	public String showPicture(Model model,WebRequest request){
+		
+		/*setting picture to show*/
+		Long id = Long.parseLong(request.getParameter("id"));
+		Picture pic = pictureService.find(id);
+		model.addAttribute(pic);
+		
+		return "pictureInfo";
+
 	}
 }

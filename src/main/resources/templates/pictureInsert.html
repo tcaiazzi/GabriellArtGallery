@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>New Picture Porco dio</title>
+<title>New Picture</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -31,12 +31,10 @@
 			</div>
 			<div>
 				<span th:text="#{label.artist}">Artist: </span> 
-				<select	name="artists">
-					<tr th:each="artist : ${artists}">
-						<option value="artist">
-						<td	th:text="'Name: ' + ${artist.name}"></td>
-						</option>
-					</tr>
+			
+				<select id="artists"  th:field="*{artist.id}">
+				<option th:each="artist : ${artists}" th:value="${artist.id}" th:text="${artist.name}">
+				</option>
 				</select>
 					
 			</div>

@@ -28,7 +28,7 @@ public class Picture {
 	@ManyToOne
 	private Artist artist;
 	public Picture() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Long getId() {

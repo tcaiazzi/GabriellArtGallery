@@ -26,5 +26,13 @@ public class ArtistService{
 		return (List<Artist>) this.artistRepository.findAll();
 	}
 	
+	public Artist find(Long id){
+		return this.artistRepository.findOne(id);
+	}
+	
+	
+	
+	
+	
 
 }

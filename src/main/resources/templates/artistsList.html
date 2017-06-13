@@ -11,11 +11,12 @@
         <th>Artists List</th>
    
       </tr>
-      <tr th:each="artist : ${artists}">
-        <td th:text="'Name: ' + ${artist.name}"></td>
-        <td th:text="'Surname: ' + ${artist.surname}"></td>
-       
-      </tr>
+      
+      <tr th:each="artist : ${artists}" th:object="${artist}" th:href="@{/artist(id=${artist.id})}">
+       <td th:text="${artist.name}"></td>
+        <td th:text="${artist.surname}"></td>
+        <td><a th:href="@{/showArtist(id=${artist.id})}"> view profile</a></td>
+       </tr>
     </table>
   
     <p>

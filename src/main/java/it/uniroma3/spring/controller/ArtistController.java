@@ -9,11 +9,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.List;
 import it.uniroma3.spring.model.Artist;
 import it.uniroma3.spring.model.Picture;
 import it.uniroma3.spring.service.ArtistService;
+import it.uniroma3.spring.service.PictureService;
 
 @Controller
 public class ArtistController {
@@ -21,9 +23,27 @@ public class ArtistController {
 	@Autowired
 	private ArtistService artistService;
 	
+	@Autowired
+	private PictureService pictureService;
+	
 	@GetMapping("/artist")
 	public String showArtistInsert(Artist artist){
 		return "artistInsert";
+	}
+	
+	
+	@GetMapping("/showArtist")
+	public String showArtistProfile(Model model,WebRequest request){
+		/*setting artist to show*/
+		Long id = Long.parseLong(request.getParameter("id"));
+		Artist art = artistService.find(id);
+		model.addAttribute(art);
+		/*setting artist's picture list if exist*/
+		if(pictureService.findPicsByArtist(art)!=null){
+		List<Picture> pictures = pictureService.findPicsByArtist(art);
+		model.addAttribute("pictures", pictures);
+		}
+		return "artistInfo";
 	}
 	
 	@PostMapping("/artist")

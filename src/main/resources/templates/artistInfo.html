@@ -16,6 +16,17 @@
     <div>
     	<p th:text="'Dead Date: ' + ${artist.deathDate}" />	
     </div>
+    
+    <table>
+      <tr>
+        <th>Picture List</th>
+   
+      </tr>
+      <tr th:each="picture : ${pictures}" th:object="${picture}" th:href="@{/picture(id=${picture.id})}">
+       <td th:text="${picture.title}"></td>
+        <td><a th:href="@{/showPicture(id=${picture.id})}"> view picture</a></td>
+       </tr>
+    </table>
 
 </body>
 </html>
