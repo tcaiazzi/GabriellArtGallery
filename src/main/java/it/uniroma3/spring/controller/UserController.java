@@ -10,33 +10,38 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import it.uniroma3.spring.model.Artist;
-import it.uniroma3.spring.service.ArtistService;
+import it.uniroma3.spring.model.User;
+import it.uniroma3.spring.service.UserService;
 
 @Controller
-public class ArtistController {
+public class UserController {
 	
 	@Autowired
-	private ArtistService artistService;
+	private UserService userService;
 	
-	@GetMapping("/artist")
-	public String showArtistInsert(Artist artist){
-		return "artistInsert";
+
+	@GetMapping("/signUp")
+	public String showUserSignUp(User user){
+		return "user/userSignUp";
 	}
 	
-	@PostMapping("/artist")
-	public String checkArtistInfo(@Valid @ModelAttribute Artist artist, 
+	
+	@PostMapping("/signUp")
+	public String checkUserInfo(@Valid @ModelAttribute User user, 
 			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			return "artistInsert";
+			return "user/userSignUp";
 		}
 		else {
-			model.addAttribute(artist);
-			artistService.add(artist); 
+			model.addAttribute(user);
+			userService.add(user); 
+			
+			
 		}
-		return "artistInfo";
+		return "userInfo";
 	}
 	
-
+	
+	
 }
