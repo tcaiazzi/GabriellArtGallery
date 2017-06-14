@@ -23,14 +23,27 @@
 	
 =======-->
 <body ng-app="app" ng-controller="home as home">
-	<h1>Demo</h1>
-	<h1>Login</h1>
+	<h1>GabriellArtGallery</h1>
+	<h2>Login</h2>
 	<div class="container" ng-show="!home.authenticated">
 		<div>
 			With Facebook: <a href="/login/facebook">click here</a>
 		</div>
 		<div>
 			With Github: <a href="/login/github">click here</a>
+		</div>
+		<div>
+			With us:  <a href="/login">click here</a>
+		</div>
+		<div>
+			Admin panel:  <a href="/admin">click here</a>
+		</div>
+
+	</div>
+	<h2>Sign Up</h2>
+	<div class="container" ng-show="!home.authenticated">
+		<div>
+			Register an account:  <a href="/signUp">click here</a>
 		</div>
 
 	</div>
@@ -42,6 +55,7 @@
 			<a href="/artist">Insert artist</a>
 		</div>
 		<div>
+
 			<a href="/exhibition">Insert exhibition</a>
 		</div>
 		<br>
@@ -57,7 +71,11 @@
 			<a href="/room">Insert Room</a>
 		</div>
 		<br>
-	</div>
+
+			Admin panel:  <a href="/admin">click here</a>
+		</div>
+
+	
 	<div class="container" ng-show="home.authenticated">
 		Logged in as: <span ng-bind="home.user"></span>
 		<div>

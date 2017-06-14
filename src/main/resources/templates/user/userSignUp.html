@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>New Picture</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form action="#" th:action="@{/signUp}" th:object="${user}"
+		method="post">
+		<div>
+			<div>
+				<span th:text="#{label.name}">Name: </span> <span><input
+					type="text" th:field="*{name}" /></span> <span
+					th:if="${#fields.hasErrors('name')}" th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.surname}">Surname: </span> <span><input
+					type="text" th:field="*{surname}" /></span> <span
+					th:if="${#fields.hasErrors('surname')}"
+					th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				Email: <span><input type="text" th:field="*{email}" /></span> <span
+					th:if="${#fields.hasErrors('email')}" th:text="#{label.emailMandatory}">Error</span>
+			</div>
+			<div>
+				Username: <span><input
+					type="text" th:field="*{username}" /></span> <span
+					th:if="${#fields.hasErrors('username')}"
+					th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				Password:  <span><input
+					type="text" th:field="*{password}" /></span> <span
+					th:if="${#fields.hasErrors('password')}"
+					th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+
+				<div>
+					<span><button type="submit">Submit</button></span>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
