@@ -22,10 +22,12 @@ public class ArtistService{
 		this.artistRepository.save(artist);
 	}
 
+	@Transactional
 	public List<Artist> getAll() {
 		return (List<Artist>) this.artistRepository.findAll();
 	}
 	
+	@Transactional
 	public Artist find(Long id){
 		return this.artistRepository.findOne(id);
 	}

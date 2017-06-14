@@ -12,7 +12,7 @@
    
       </tr>
       
-      <tr th:each="artist : ${artists}" th:object="${artist}" th:href="@{/artist(id=${artist.id})}">
+      <tr th:each="artist : ${artists}" th:object="${artist}">
        <td th:text="${artist.name}"></td>
         <td th:text="${artist.surname}"></td>
         <td><a th:href="@{/showArtist(id=${artist.id})}"> view profile</a></td>

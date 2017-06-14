@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>New Room</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form action="#" th:action="@{/room}" th:object="${room}" method="post">
+		<div>
+			<div>
+				<span th:text="#{label.name}">Name: </span> <span><input
+					type="text" th:field="*{name}" /></span> <span
+					th:if="${#fields.hasErrors('name')}" th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.description}">Description: </span> <span><input
+					type="text" th:field="*{description}" /></span>
+
+			</div>
+
+
+			<span><button type="submit">Submit</button></span>
+		</div>
+	</form>
+
+	<p>
+		<a href="../index.html" th:href="@{/}">Return to home</a>
+	</p>
+</body>
+</html>

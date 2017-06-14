@@ -24,11 +24,12 @@ public class PictureService{
 		this.pictureRepository.save(painting);
 	}
 	
+	@Transactional
 	public Picture find(Long id) {
 		return this.pictureRepository.findOne(id);
 	}
 
-	
+	@Transactional
 	public List<Picture> findPicsByArtist(Artist a){
 		return this.pictureRepository.findByArtist(a);
 

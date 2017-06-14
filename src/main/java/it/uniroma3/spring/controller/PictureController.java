@@ -2,7 +2,7 @@ package it.uniroma3.spring.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +43,7 @@ public class PictureController {
 
 	@PostMapping("/picture")
 	public String checkPictureInfo(@Valid @ModelAttribute Picture picture,
-			BindingResult bindingResult, Model model,HttpServletRequest request) {
+			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
 			return "pictureInsert";
@@ -52,11 +52,7 @@ public class PictureController {
 			
 			model.addAttribute(picture);
 			pictureService.add(picture); 
-			System.out.print(picture.getArtist().getName());
 			
-			for (Picture pic : picture.getArtist().getPictures().values()){
-				System.out.println("--------"+pic.getTitle());
-			}
 			
 		return "pictureInfo";
 	}
