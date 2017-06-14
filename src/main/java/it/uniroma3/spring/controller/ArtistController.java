@@ -26,9 +26,9 @@ public class ArtistController {
 	@Autowired
 	private PictureService pictureService;
 	
-	@GetMapping("/artist")
+	@GetMapping("/admin/artist")
 	public String showArtistInsert(Artist artist){
-		return "artistInsert";
+		return "admin/artistInsert";
 	}
 	
 	
@@ -46,7 +46,7 @@ public class ArtistController {
 		return "artistInfo";
 	}
 	
-	@PostMapping("/artist")
+	@PostMapping("/admin/artist")
 	public String checkArtistInfo(@Valid @ModelAttribute Artist artist, 
 			BindingResult bindingResult, Model model) {
 

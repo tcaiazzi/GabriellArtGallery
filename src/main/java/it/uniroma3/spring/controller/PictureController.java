@@ -31,17 +31,17 @@ public class PictureController {
 
 
 
-	@GetMapping("/picture")
+	@GetMapping("/admin/picture")
 	public String showPictureInsert(Picture picture,Model model){
 		
 		List<Artist> artists = artistService.getAll();
 		model.addAttribute("artists",artists);
 		
-		return "pictureInsert";
+		return "admin/pictureInsert";
 
 	}
 
-	@PostMapping("/picture")
+	@PostMapping("/admin/picture")
 	public String checkPictureInfo(@Valid @ModelAttribute Picture picture,
 			BindingResult bindingResult, Model model) {
 

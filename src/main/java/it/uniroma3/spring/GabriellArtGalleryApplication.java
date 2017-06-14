@@ -53,12 +53,12 @@ public class GabriellArtGalleryApplication extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/signUp").permitAll().antMatchers("/admin").hasAuthority("ADMIN")
+		http.authorizeRequests().antMatchers("/", "/signUp").permitAll().antMatchers("/admin/**").hasAuthority("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.antMatcher("/**")
 		.authorizeRequests()
-		.antMatchers("/", "/login**", "/webjars/**", "/picture", "/signUp").permitAll()
+		.antMatchers("/", "/login**", "/webjars/**", "/signUp").permitAll()
 		.anyRequest().authenticated()
 		.and().exceptionHandling()
 		.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/"))

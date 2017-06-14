@@ -19,24 +19,24 @@ public class RoomController {
 
 
 
-	@GetMapping("/room")
+	@GetMapping("/admin/room")
 	public String showRoomInsert(Room room){
 
-		return "roomInsert";
+		return "admin/roomInsert";
 	}
 
-	@PostMapping("/room")
+	@PostMapping("/admin/room")
 	public String checkRoomInfo(@Valid @ModelAttribute Room room,
 			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			return "roomInsert";
+			return "admin/roomInsert";
 		}
 		else 
 			model.addAttribute(room);
 		roomService.add(room);
 
-		return "roomInsert";
+		return "admin/roomInsert";
 
 
 

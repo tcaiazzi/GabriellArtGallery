@@ -31,7 +31,7 @@ public class ExhibitionController {
 	
 	
 	
-	@GetMapping("/exhibition")
+	@GetMapping("/admin/exhibition")
 	public String showExhibitionInsert(Exhibition exhibition,Model model){
 		
 		
@@ -39,10 +39,10 @@ public class ExhibitionController {
 		model.addAttribute("rooms", rooms);
 		
 		
-		return "exhibitionInsert";
+		return "admin/exhibitionInsert";
 	}
 	
-	@PostMapping("/exhibition")
+	@PostMapping("/admin/exhibition")
 	public String checkExhibitionInfo(@Valid @ModelAttribute Exhibition exhibition,
 			BindingResult bindingResult, Model model,WebRequest request) {
 		
