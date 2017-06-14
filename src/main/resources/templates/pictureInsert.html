@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>New Picture</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form action="#" th:action="@{/admin/picture}" th:object="${picture}"
+		method="post">
+		<div>
+			<div>
+				<span th:text="#{label.title}">Name: </span> <span><input
+					type="text" th:field="*{title}" /></span> <span
+					th:if="${#fields.hasErrors('title')}" th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.year}">Last name: </span> <span><input
+					type="text" th:field="*{year}" /></span> <span
+					th:if="${#fields.hasErrors('year')}" th:text="#{label.number}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.medium}">Age: </span> <span><input
+					type="text" th:field="*{medium}" /></span> <span
+					th:if="${#fields.hasErrors('medium')}" th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.dimension}">Dimension: </span> <span><input
+					type="text" th:field="*{dimension}" /></span> <span
+					th:if="${#fields.hasErrors('dimension')}"
+					th:text="#{label.mandatory}">Error</span>
+			</div>
+			<div>
+				<span th:text="#{label.artist}">Artist: </span> 
+			
+				<select id="artists"  th:field="*{artist.id}">
+				<option th:each="artist : ${artists}" th:value="${artist.id}" th:text="${artist.name}">
+				</option>
+				</select>
+					
+			</div>
+			<div>
+				<span><button type="submit">Submit</button></span>
+			</div>
+		</div>
+	</form>
+	
+	<p>
+      <a href="../index.html" th:href="@{/}">Return to home</a>
+    </p>
+</body>
+</html>

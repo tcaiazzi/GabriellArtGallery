@@ -15,5 +15,7 @@ public class AdminController {
 	public String showAdminPanel(User user){
 		return "admin";
 	}
+	
+	
 
 }

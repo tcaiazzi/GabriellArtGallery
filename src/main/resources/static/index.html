@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Demo</title>
+<title>GabriellArtGallery</title>
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width" />
 <base href="/" />
@@ -13,6 +13,7 @@
 <script type="text/javascript"
 	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
+
 <body ng-app="app" ng-controller="home as home">
 	<h1>GabriellArtGallery</h1>
 	<h2>Login</h2>
@@ -39,16 +40,23 @@
 
 	</div>
 	<div class="container" ng-show="home.authenticated">
+		
+		<br>
 		<div>
-			<a href="/picture">Insert picture</a>
+			<a href="/artistsList">Artists List</a>
 		</div>
 		<div>
-			<a href="/artist">Insert artist</a>
+			<a href="/exhibitionList">Exhibition List</a>
 		</div>
-		<div>
+		
+	
+		
+		<br>
+
 			Admin panel:  <a href="/admin">click here</a>
 		</div>
-	</div>
+
+	
 	<div class="container" ng-show="home.authenticated">
 		Logged in as: <span ng-bind="home.user"></span>
 		<div>

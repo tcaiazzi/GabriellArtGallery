@@ -8,7 +8,6 @@ import javax.servlet.Filter;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
@@ -42,11 +41,7 @@ public class GabriellArtGalleryApplication extends WebSecurityConfigurerAdapter{
 	@Autowired
 	OAuth2ClientContext oauth2ClientContext;
 	
-	@Value("${spring.queries.users-query}")
-	private String usersQuery;
 	
-	@Value("${spring.queries.roles-query}")
-	private String rolesQuery;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;

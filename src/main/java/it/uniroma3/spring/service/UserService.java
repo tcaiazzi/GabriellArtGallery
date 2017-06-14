@@ -29,7 +29,7 @@ public class UserService {
 		this.userRepository.save(user);
 		Permission permission = new Permission(user.getUsername(), user.getId(), "ADMIN");
 		permissionRepository.save(permission);
-        userRepository.save(user);
+     
 		
 	}
 	

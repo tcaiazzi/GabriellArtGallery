@@ -1,5 +1,7 @@
 package it.uniroma3.spring.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,20 @@ public class ArtistService{
 	public void add(final Artist artist){
 		this.artistRepository.save(artist);
 	}
+
+	@Transactional
+	public List<Artist> getAll() {
+		return (List<Artist>) this.artistRepository.findAll();
+	}
+	
+	@Transactional
+	public Artist find(Long id){
+		return this.artistRepository.findOne(id);
+	}
+	
+	
+	
+	
 	
 
 }
