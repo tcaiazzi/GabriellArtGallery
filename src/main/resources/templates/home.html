@@ -71,41 +71,41 @@
 			<form th:action="@{/logout}" method="post">
 				<input type="submit" value="Sign Out" />
 			</form>
+
+			<div class="container">
+				Logged in as: <span ng-bind="home.user"></span>
+			</div>
 		</div>
 	</div>
 
-	<div class="container" sec:authorize="isAuthenticated()">
-		Logged in as:<div> <p sec:authentication="name" /> </div>
-		<div class="container">
-			Logged in as: <span ng-bind="home.user"></span>
-		</div>
 
-		<div>Logout</div>
-	</div>
+
+	<div>Logout</div>
+
 	<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
-	<script>angular.module("app", [])
+	<script type="text/javascript">
+    angular.module("app", [])
         .config(function($httpProvider) {
               $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
             }).controller("home", function($http, $location) {
           var self = this;
           $http.get("/user").success(function(data) {
             if (data.userAuthentication) {
-              self.user = data.userAuthentication.details.name;
-              self.authenticated = true;
+              if(data.userAuthentication.details.name)
+                self.user = data.userAuthentication.details.name;
+              else
+                self.user = data.principal              
             } else if(data.principal){
-              self.user = data.principal.username;
-              self.authenticated = true;
+              self.user = data.principal.username;              
             }
-            else {
-              self.user = "N/A";
-              self.authenticated = false;
-            }
-          }).error(function() {
-            self.user = "N/A";
-            self.authenticated = false;
+            
+            
+          }).error(function() {            
+            
           });
           
-        });</script>
-        </body>
+        });
+  </script>
+</body>
 
 </html>
