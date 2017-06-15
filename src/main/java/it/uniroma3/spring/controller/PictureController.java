@@ -68,4 +68,14 @@ public class PictureController {
 		return "pictureInfo";
 
 	}
+	
+	@GetMapping("/picturesList")
+	public String showPicturesList(Model model){
+		
+		List<Picture> pictures = pictureService.getAll();
+		model.addAttribute("pictures", pictures);
+		
+		return "picturesList";
+
+	}
 }

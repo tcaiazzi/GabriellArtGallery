@@ -35,6 +35,11 @@ public class PictureService{
 
 	}
 
+	public List<Picture> getAll() {
+		
+		return (List<Picture>) this.pictureRepository.findAll();
+	}
+
 
 	
 

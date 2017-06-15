@@ -14,6 +14,15 @@ public class AdminController {
 	@GetMapping("/admin")
 	public String showAdminPanel(User user){
 		return "admin";
+		
 	}
+	@GetMapping("/newAdmin")
+		public String showAdminNewPanel(User user){
+			return "newAdmin";
+		}
+	
+	
+	
+	
 
 }

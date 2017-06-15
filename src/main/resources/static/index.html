@@ -20,7 +20,7 @@
 	<p> <a href="/artist">Insert artist</a> </p>
 	<br><hr><br>
 	<p> <a href="/artistsList">Artists list</a> </p>
-	
+
 =======-->
 <body ng-app="app" ng-controller="home as home">
 	<h1>GabriellArtGallery</h1>
@@ -65,17 +65,21 @@
 		<div>
 			<a href="/exhibitionList">Exhibition List</a>
 		</div>
-		
+
 		<br>
 		<div>
 			<a href="/room">Insert Room</a>
 		</div>
 		<br>
-
+		<div>
 			Admin panel:  <a href="/admin">click here</a>
 		</div>
+		<br>
+		<div>
+			New Admin panel:  <a href="/newAdmin">click here</a>
+		</div>
 
-	
+
 	<div class="container" ng-show="home.authenticated">
 		Logged in as: <span ng-bind="home.user"></span>
 		<div>

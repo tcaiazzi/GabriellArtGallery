@@ -68,16 +68,16 @@
 					<div class="col-md-12">
 						<!-- Form Elements -->
 						<div class="panel panel-default">
-							<div class="panel-heading">Artist Info</div>
+							<div class="panel-heading">Picture List</div>
 							<div class="row">
 								<div class="panel-body">
 									<div class="col-md-12">
 										<h3></h3>
 										<ul class="list-group">
-											<th:block th:object="${artist}">
-											<li class="list-group-item" th:each="artist : ${artists}">
-											<p th:text="${artist.surname}+ ' ' +  ${artist.name}" />
-											<a th:href="@{/showArtist(id=${artist.id})}"> view profile</a>
+											<th:block th:object="${picture}">
+											<li class="list-group-item" th:each="picture : ${pictures}">
+											<p th:text="${picture.title}" />
+											<a th:href="@{/showPicture(id=${picture.id})}"> view detail</a>
 											</li>
 											</th:block>
 										</ul>

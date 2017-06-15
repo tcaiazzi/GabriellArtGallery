@@ -69,19 +69,19 @@ public class ExhibitionController {
 		Exhibition ex = exhibitionService.find(id);
 		model.addAttribute(ex);
 		
-		/*
+		
 		List<Room> rooms = roomService.findAll();
-		model.addAttribute("rooms", rooms);*/
+		model.addAttribute("rooms", rooms);
 		
 		
 		return "exhibitionInfo";
 	}
 	
-	@GetMapping("/exhibitionList")
+	@GetMapping("/exhibitionsList")
 	public String showArtistsList( Model model){
 		List<Exhibition> exhibitions = exhibitionService.getAll();
 		model.addAttribute("exhibitions", exhibitions);
-		return "exhibitionList";
+		return "exhibitionsList";
 	}
 	
 }

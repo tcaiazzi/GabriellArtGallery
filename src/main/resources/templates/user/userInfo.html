@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,7 +43,7 @@
 							Artist</a></li>
 					<li><a href="/picture.html"><i class="fa fa-edit fa-3x"></i>
 							Picture</a></li>
-					<li><a href="/exhibition"><i class="fa fa-edit fa-3x"></i>
+					<li><a href="/formNew.html"><i class="fa fa-edit fa-3x"></i>
 							Exhibition </a></li>
 
 					<li><a href="blank.html"><i class="fa fa-square-o fa-3x"></i>
@@ -68,20 +69,18 @@
 					<div class="col-md-12">
 						<!-- Form Elements -->
 						<div class="panel panel-default">
-							<div class="panel-heading">Artist Info</div>
+							<div class="panel-heading">User Info</div>
 							<div class="row">
 								<div class="panel-body">
 									<div class="col-md-12">
 										<h3></h3>
 										<ul class="list-group">
-											<th:block th:object="${artist}">
-											<li class="list-group-item" th:each="artist : ${artists}">
-											<p th:text="${artist.surname}+ ' ' +  ${artist.name}" />
-											<a th:href="@{/showArtist(id=${artist.id})}"> view profile</a>
-											</li>
-											</th:block>
+											<li class="list-group-item"><p th:text="'Name: ' + ${principal.name}" /></li>
+											<!-- <li class="list-group-item"><p th:text="'Surname: ' + ${artist.surname}" /></li>
+											<li class="list-group-item"><p th:text="'Nationality: ' + ${artist.nationality}" /></li>
+											<li class="list-group-item"><p th:text="'BirthDate: ' + ${artist.birthDate}" /></li>
+											<li class="list-group-item"><p th:text="'DeathDate: ' + ${artist.deathDate}" /></li> -->
 										</ul>
-										
 
 
 									</div>
