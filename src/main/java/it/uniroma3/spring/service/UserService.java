@@ -23,13 +23,23 @@ public class UserService {
 	 private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Transactional
-	public void add(final User user){
+	public void addUser(final User user){
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		user.setEnabled(true);
+		this.userRepository.save(user);
+		Permission permission = new Permission(user.getUsername(), user.getId(), "ROLE_USER");
+		permissionRepository.save(permission);
+     
+		
+	}
+	
+	@Transactional
+	public void addAdmin(final User user){
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setEnabled(true);
 		this.userRepository.save(user);
 		Permission permission = new Permission(user.getUsername(), user.getId(), "ADMIN");
 		permissionRepository.save(permission);
-     
 		
 	}
 	

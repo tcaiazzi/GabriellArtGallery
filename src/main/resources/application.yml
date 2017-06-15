@@ -9,7 +9,6 @@ facebook:
     clientAuthenticationScheme: form
   resource:
     userInfoUri: https://graph.facebook.com/me
-
 github:
   client:
     clientId: bd1c0a783ccdd1c9b9e4
@@ -19,5 +18,15 @@ github:
     clientAuthenticationScheme: form
   resource:
     userInfoUri: https://api.github.com/user
-    
-  
+google:
+  client:
+    clientId:  147267194674-pkt5g2vavbaglsvrua3hqvsqjfkle9gm.apps.googleusercontent.com 
+    clientSecret:  1_IGN0fR5akrePWjSm14Wtbi 
+    accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+    userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+    tokenName: oauth_token
+    authenticationScheme: query
+    scope: https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/userinfo.profile
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo

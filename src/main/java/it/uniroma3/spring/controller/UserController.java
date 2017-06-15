@@ -35,7 +35,7 @@ public class UserController {
 		}
 		else {
 			model.addAttribute(user);
-			userService.add(user); 
+			userService.addUser(user); 
 			
 			
 		}

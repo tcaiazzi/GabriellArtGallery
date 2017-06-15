@@ -50,18 +50,33 @@ public class GabriellArtGalleryApplication extends WebSecurityConfigurerAdapter{
 	public Principal user(Principal principal) {
 		return principal;
 	}
+	
+	
+	@Autowired
+	DataSource dataSource;
+ 
+	@Autowired
+	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(bCryptPasswordEncoder)
+		.usersByUsernameQuery("select username,password, enabled from users where username=?")
+		.authoritiesByUsernameQuery("select username, role from permission where username=?");
+		
+	}
+	
+	
+
+	
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/", "/signUp").permitAll().antMatchers("/admin/**").hasAuthority("ADMIN")
 		.anyRequest().authenticated()
 		.and()
-		.antMatcher("/**")
-		.authorizeRequests()
+		.antMatcher("/**").authorizeRequests()
 		.antMatchers("/", "/login**", "/webjars/**", "/signUp").permitAll()
 		.anyRequest().authenticated()
 		.and().exceptionHandling()
-		.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/"))
+		.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
 		.and().formLogin()
 		.loginPage("/login").permitAll()
 		.and().logout()
@@ -76,6 +91,8 @@ public class GabriellArtGalleryApplication extends WebSecurityConfigurerAdapter{
 		List<Filter> filters = new ArrayList<>();
 		filters.add(ssoFilter(facebook(), "/login/facebook"));
 		filters.add(ssoFilter(github(), "/login/github"));
+		filters.add(ssoFilter(google(), "/login/google"));
+		
 		filter.setFilters(filters);
 		return filter;
 	}
@@ -104,6 +121,12 @@ public class GabriellArtGalleryApplication extends WebSecurityConfigurerAdapter{
 	public ClientResources facebook() {
 		return new ClientResources();
 	}
+	
+	@Bean
+	@ConfigurationProperties("google")
+	public ClientResources google() {
+		return new ClientResources();
+	}
 
 	@Bean
 	public FilterRegistrationBean oauth2ClientFilterRegistration(
@@ -114,20 +137,7 @@ public class GabriellArtGalleryApplication extends WebSecurityConfigurerAdapter{
 		return registration;
 	}
 
-	@Autowired
-	DataSource dataSource;
- 
-	@Autowired
-	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(bCryptPasswordEncoder)
-		.usersByUsernameQuery("select username,password, enabled from users where username=?")
-		.authoritiesByUsernameQuery("select username, role from permission where username=?");
-		
-	}
-	
-	
 
-	
 
 
 	class ClientResources {
