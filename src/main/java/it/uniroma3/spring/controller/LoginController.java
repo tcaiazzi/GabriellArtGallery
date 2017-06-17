@@ -35,5 +35,9 @@ public class LoginController {
 		  return null;
 	  }
 	  
+	  @RequestMapping("/gag")
+	  public String getHome(Model model){
+		  return "gag";
+	  }
 
 }

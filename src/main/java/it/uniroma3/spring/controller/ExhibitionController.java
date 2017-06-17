@@ -50,6 +50,7 @@ public class ExhibitionController {
 			return "exhibitionInsert";
 		}
 		else 
+		exhibition.setUrl("../img/exhibition/"+exhibition.getUrl());
 		model.addAttribute(exhibition);
 		exhibitionService.add(exhibition); 
 		
@@ -77,11 +78,18 @@ public class ExhibitionController {
 		return "exhibitionInfo";
 	}
 	
-	@GetMapping("/exhibitionsList")
-	public String showArtistsList( Model model){
+	@GetMapping("/exhibitionsListAdmin")
+	public String showExhibitionsListAdmin( Model model){
 		List<Exhibition> exhibitions = exhibitionService.getAll();
 		model.addAttribute("exhibitions", exhibitions);
 		return "exhibitionsList";
+	}
+	
+	@GetMapping("/exhibitionsList")
+	public String showExhibiotnsList( Model model){
+		List<Exhibition> exhibitions = exhibitionService.getAll();
+		model.addAttribute("exhibitions", exhibitions);
+		return "exhibitionsListGag";
 	}
 	
 }

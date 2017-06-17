@@ -50,6 +50,10 @@ public class PictureController {
 		}
 		else 
 			
+		
+			picture.setUrl("../img/picture/"+picture.getUrl());
+		
+
 			model.addAttribute(picture);
 			pictureService.add(picture); 
 			

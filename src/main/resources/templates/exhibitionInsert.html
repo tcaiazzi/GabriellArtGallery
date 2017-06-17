@@ -72,7 +72,7 @@
 							<div class="panel-heading">Form Insert Exhibition</div>
 							<div class="row">
 								<div class="panel-body">
-									<div class="col-md-6">
+									<div class="col-md-12">
 										<h3></h3>
 										<!-- FORM -->
 										<form role="form" action="#" th:action="@{/exhibition}"
@@ -91,6 +91,13 @@
 												<p class="help-block">
 													<span th:if="${#fields.hasErrors('description')}"
 														th:text="#{label.mandatory}"></span>
+												</p>
+											</div>
+											<div class="form-group">
+												<label>Flyer (img url):</label> <input class="form-control file"
+													th:field="*{url}" th:type="file" />
+												<p class="help-block">
+													
 												</p>
 											</div>
 											<div class="form-group">
@@ -114,7 +121,7 @@
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<a href="/exhibitionsList">
+						<a href="/exhibitionsListAdmin">
 							<div class="panel panel-back noti-box">
 								<span class="icon-box bg-color-green set-icon"> <i
 									class="fa fa-bars"></i>

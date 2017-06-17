@@ -68,7 +68,7 @@
 
 					<div class="col-md-12">
 						<!-- Form Elements -->
-						<div class="panel panel-default">
+						<div class="panel panel-success">
 							<div class="panel-heading">Exhibition Info</div>
 							<div class="row">
 								<div class="panel-body">
@@ -77,17 +77,21 @@
 										<ul class="list-group">
 											<li class="list-group-item"><p
 													th:text="'Name: ' + ${exhibition.name}" /></li>
+											<li class="list-group-item">
+													<p th:text="'Url: ' + ${exhibition.url}" />
+												<img th:src="${exhibition.url}"></img></li>
+
 										</ul>
-										
-										
+
+
 										<ul>
-										<h6>Exhibition's Room</h6>
+											<h6>Exhibition's Room</h6>
 											<li class="list-group-item" th:each="room : ${rooms}">
-											<p th:text="${room.name}"/>
-											<a th:href="@{/showRoom(id=${room.id})}">view room</a>
+												<p th:text="${room.name}" /> <a
+												th:href="@{/showRoom(id=${room.id})}">view room</a>
 											</li>
 										</ul>
-										
+
 
 
 									</div>
@@ -101,20 +105,20 @@
 				</div>
 			</div>
 		</div>
-		</div>
-		<!-- /. WRAPPER  -->
-		<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-		<!-- JQUERY SCRIPTS -->
-		<script src="../js/jquery-1.10.2.js"></script>
-		<!-- BOOTSTRAP SCRIPTS -->
-		<script src="../js/bootstrap.min.js"></script>
-		<!-- METISMENU SCRIPTS -->
-		<script src="../js/jquery.metisMenu.js"></script>
-		<!-- MORRIS CHART SCRIPTS -->
-		<script src="../js/morris/raphael-2.1.0.min.js"></script>
-		<script src="../js/morris/morris.js"></script>
-		<!-- CUSTOM SCRIPTS -->
-		<script src="../js/custom.js"></script>
+	</div>
+	<!-- /. WRAPPER  -->
+	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<!-- JQUERY SCRIPTS -->
+	<script src="../js/jquery-1.10.2.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script src="../js/bootstrap.min.js"></script>
+	<!-- METISMENU SCRIPTS -->
+	<script src="../js/jquery.metisMenu.js"></script>
+	<!-- MORRIS CHART SCRIPTS -->
+	<script src="../js/morris/raphael-2.1.0.min.js"></script>
+	<script src="../js/morris/morris.js"></script>
+	<!-- CUSTOM SCRIPTS -->
+	<script src="../js/custom.js"></script>
 </body>
 </html>
 

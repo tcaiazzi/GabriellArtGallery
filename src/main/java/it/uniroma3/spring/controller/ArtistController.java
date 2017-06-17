@@ -54,17 +54,24 @@ public class ArtistController {
 			return "artistInsert";
 		}
 		else {
+			artist.setUrl("../img/artist/"+artist.getUrl());
 			model.addAttribute(artist);
 			artistService.add(artist); 
 		}
 		return "artistInfo";
+	}
+	@GetMapping("/artistsListAdmin")
+	public String showArtistsListAdmin( Model model){
+		List<Artist> artists = artistService.getAll();
+		model.addAttribute("artists", artists);
+		return "artistsList";
 	}
 	
 	@GetMapping("/artistsList")
 	public String showArtistsList( Model model){
 		List<Artist> artists = artistService.getAll();
 		model.addAttribute("artists", artists);
-		return "artistsList";
+		return "artistsListGag";
 	}
 	
 

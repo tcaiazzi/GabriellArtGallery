@@ -393,6 +393,11 @@ line-height: 1.428571429;
  border-radius: 0px;
 }
 
+.form-control .file{
+	height:40px;
+	widht:100px;
+}
+
 }
 
 

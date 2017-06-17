@@ -36,7 +36,7 @@
 		<nav class="navbar-default navbar-side" role="navigation">
 			<div class="sidebar-collapse">
 				<ul class="nav" id="main-menu">
-					<li class="text-center"><img src="assets/img/find_user.png"
+					<li class="text-center"><img src="../img/find_user.png"
 						class="user-image img-responsive" /></li>
 
 					<li><a href="/artist.html"><i class="fa fa-edit fa-3x"></i>
@@ -67,7 +67,7 @@
 				<div class="row">
 
 					<div class="col-md-12">
-						<div class="panel panel-default">
+						<div class="panel panel-success">
 							<div class="panel-heading">Picture Info</div>
 							<div class="row">
 								<div class="panel-body">
@@ -78,6 +78,7 @@
 											<li class="list-group-item"><p th:text="'Year: ' + ${picture.year}" /></li>
 											<li class="list-group-item"><p th:text="'Medium: ' + ${picture.medium}" /></li>
 											<li class="list-group-item"><p th:text="'Dimension: ' + ${picture.dimension}" /></li>
+											<li class="list-group-item"><p th:text="'Url: ' + ${picture.url}" /><img th:src="${picture.url}"></img></li>
 											<li class="list-group-item"><p th:text="'Artist: ' + ${picture.artist.id}" /></li>
 										</ul>
 

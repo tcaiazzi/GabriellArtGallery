@@ -23,6 +23,10 @@ public class Exhibition {
 	private String description;
 	@OneToMany
 	private List<Room> rooms;
+	@NotNull
+	@Size(min=1)
+	private String url;
+	
 
 	public Exhibition() {
 		this.rooms = new ArrayList<>();
@@ -60,6 +64,13 @@ public class Exhibition {
 		this.rooms = rooms;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	
 
 	

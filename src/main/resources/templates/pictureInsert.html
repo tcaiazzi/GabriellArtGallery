@@ -71,7 +71,7 @@
 							<div class="panel-heading">Form Picture Artist</div>
 							<div class="row">
 								<div class="panel-body">
-									<div class="col-md-6">
+									<div class="col-md-12">
 										<h3></h3>
 										<!-- FORM -->
 										<form role="form" action="#" th:action="@{/picture}"
@@ -108,6 +108,18 @@
 														th:text="#{label.mandatory}"></span>
 												</p>
 											</div>
+											<div class="form-group">
+												<label>File Input:</label> <input class="form-control file"
+													th:field="*{url}" th:type="file" />
+												<p class="help-block">
+													
+												</p>
+											</div>
+											
+											<!--  <div class="form-group">
+                                            <label>File input</label>
+                                            <input type="file" /> -->
+                                       
 											<div class="form-group">
 												<select class="form-control" id="artists"  th:field="*{artist.id}">
 												<option th:each="artist : ${artists}" th:value="${artist.id}" th:text="${artist.name}+' '+${artist.surname}">

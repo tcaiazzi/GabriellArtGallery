@@ -31,6 +31,13 @@ public class Artist {
 	@NotNull
 	@Size(min=1)
 	private String nationality; 
+	
+	@NotNull
+	@Size(min=1)
+	private String url;
+
+
+	
 
 	@NotNull
 	@Temporal(TemporalType.DATE)
@@ -101,6 +108,14 @@ public class Artist {
 
 	public void setPictures(Map<String, Picture> pictures) {
 		this.pictures = pictures;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	@Override
