@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link rel="icon" href="../../favicon.ico" />
+
+<title>GAG | Exhibitions</title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/gag.css" rel="stylesheet" />
+
+
+
+<!-- Custom styles for this template -->
+<link href="css/navbar-fixed-top.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Monoton"
+	rel="stylesheet" />
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="bg">
+			<!-- Fixed navbar -->
+			<nav class="navbar navbar-default navbar-fixed-top ">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse" data-target="#navbar"
+							aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/gag">GabriellArtGallery</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">Home</a></li>
+							<li><a href="#event">Event</a></li>
+							<li><a href="/exhibitionsList">Exhibition</a></li>
+							<li><a href="/artistsList">Artists</a></li>
+							<li><a href="#photo">Photo</a></li>
+							<li></li>
+							<li></li>
+
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#about">About us</a></li>
+							<li><a href="#contact">Contact</a></li>
+							<li class="active"><a href="./"> Sign in <span
+									class="sr-only">(current)</span></a></li>
+						</ul>
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+			</nav>
+			<div id="page-inner">
+				<div class="container">
+					<div class="row" th:each="artist : ${artists}">
+					
+						<div class="col-lg-8">
+						<section class="panelExhibitionDesc" id="about">
+						<h2 th:text="${artist.name}+'  '+${artist.surname}"></h2>
+						<a th:href="@{/showArtist(id=${artist.id})}"> more info </a>						</section >
+						</div>
+						<div class="col-lg-4">
+						<section class="panelExhibition" id="about">
+						<div id="artistPanel">
+						<img th:src="${artist.url}"></img>
+						</div>
+						</section>
+						</div>
+						</div>
+				</div>
+			</div>
+
+			<footer class="footer">
+				<div class="container">
+					<p class="text-muted">Place sticky footer content here.</p>
+				</div>
+			</footer>
+		</div>
+	</div>
+
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+    // <![CDATA[
+    window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>');
+    // ]]>
+</script>
+	<script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>

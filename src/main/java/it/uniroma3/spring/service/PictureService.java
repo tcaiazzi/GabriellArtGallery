@@ -14,16 +14,16 @@ import it.uniroma3.spring.repository.PictureRepository;
 
 @Service
 public class PictureService{
-	
+
 	@Autowired
 	private PictureRepository pictureRepository;
-	
-	
+
+
 	@Transactional
 	public void add(final Picture painting){
 		this.pictureRepository.save(painting);
 	}
-	
+
 	@Transactional
 	public Picture find(Long id) {
 		return this.pictureRepository.findOne(id);
@@ -34,8 +34,11 @@ public class PictureService{
 		return this.pictureRepository.findByArtist(a);
 
 	}
-
-
 	
+	public List<Picture> getAll() {
+
+		return (List<Picture>) this.pictureRepository.findAll();
+	}
+
 
 }

@@ -15,13 +15,13 @@ import it.uniroma3.spring.repository.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private PermissionRepository permissionRepository;
-	
-	 @Autowired
-	 private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 	@Transactional
 	public void addUser(final User user){
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -29,10 +29,10 @@ public class UserService {
 		this.userRepository.save(user);
 		Permission permission = new Permission(user.getUsername(), user.getId(), "ROLE_USER");
 		permissionRepository.save(permission);
-     
-		
+
+
 	}
-	
+
 	@Transactional
 	public void addAdmin(final User user){
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -40,9 +40,10 @@ public class UserService {
 		this.userRepository.save(user);
 		Permission permission = new Permission(user.getUsername(), user.getId(), "ADMIN");
 		permissionRepository.save(permission);
-		
+
+
 	}
-	
+
 	public User findUserById(Long id){
 		return this.userRepository.findById(id);
 	}
@@ -53,9 +54,9 @@ public class UserService {
 		User user = findUserById(id);
 		user.setEnabled(true);
 		this.userRepository.save(user);
-			
+
 	}
-	
-	
-	
+
+
+
 }

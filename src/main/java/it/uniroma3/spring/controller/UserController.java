@@ -1,7 +1,6 @@
 package it.uniroma3.spring.controller;
 
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +53,7 @@ public class UserController {
 		return "userInfo";
 	}
 	
-	
+
 	@GetMapping("/signUp/confirm")
 	public String confirmRegistration(HttpServletRequest request){
 		this.userService.confirmUserAccount(Long.parseLong(request.getParameter("id")));
@@ -62,5 +61,6 @@ public class UserController {
 	}
 	
 	
+
 	
 }

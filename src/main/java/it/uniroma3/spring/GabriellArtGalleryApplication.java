@@ -86,6 +86,7 @@ public class GabriellArtGalleryApplication extends WebSecurityConfigurerAdapter{
 		.and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
 	}
 
+
 	private Filter ssoFilter() {
 		CompositeFilter filter = new CompositeFilter();
 		List<Filter> filters = new ArrayList<>();

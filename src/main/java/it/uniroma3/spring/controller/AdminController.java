@@ -23,8 +23,11 @@ public class AdminController {
 	
 	@GetMapping("/admin")
 	public String showAdminPanel(User user){
+
 		return "admin/adminPanel";
+
 	}
+
 	
 	@GetMapping("/admin/registration")
 	public String showAdminRegistartion(User user){
@@ -47,7 +50,7 @@ public class AdminController {
 		}
 		return "userInfo";
 	}
-	
+
 	
 	
 

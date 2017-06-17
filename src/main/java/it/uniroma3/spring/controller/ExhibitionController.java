@@ -1,3 +1,4 @@
+
 package it.uniroma3.spring.controller;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class ExhibitionController {
 		model.addAttribute("rooms", rooms);
 		
 		
-		return "admin/exhibitionInsert";
+		return "exhibitionInsert";
 	}
 	
 	@PostMapping("/admin/exhibition")
@@ -50,6 +51,7 @@ public class ExhibitionController {
 			return "exhibitionInsert";
 		}
 		else 
+		exhibition.setUrl("../img/exhibition/"+exhibition.getUrl());
 		model.addAttribute(exhibition);
 		exhibitionService.add(exhibition); 
 		
@@ -69,19 +71,26 @@ public class ExhibitionController {
 		Exhibition ex = exhibitionService.find(id);
 		model.addAttribute(ex);
 		
-		/*
+		
 		List<Room> rooms = roomService.findAll();
-		model.addAttribute("rooms", rooms);*/
+		model.addAttribute("rooms", rooms);
 		
 		
 		return "exhibitionInfo";
 	}
 	
-	@GetMapping("/exhibitionList")
-	public String showArtistsList( Model model){
+	@GetMapping("/admin/exhibitionsList")
+	public String showExhibitionsListAdmin( Model model){
 		List<Exhibition> exhibitions = exhibitionService.getAll();
 		model.addAttribute("exhibitions", exhibitions);
-		return "exhibitionList";
+		return "exhibitionsList";
+	}
+	
+	@GetMapping("/exhibitionsList")
+	public String showExhibiotnsList( Model model){
+		List<Exhibition> exhibitions = exhibitionService.getAll();
+		model.addAttribute("exhibitions", exhibitions);
+		return "exhibitionsListGag";
 	}
 	
 }

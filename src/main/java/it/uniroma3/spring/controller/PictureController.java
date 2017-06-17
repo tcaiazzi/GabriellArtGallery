@@ -1,6 +1,7 @@
 package it.uniroma3.spring.controller;
 
-import java.security.Principal;
+
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -24,19 +25,21 @@ public class PictureController {
 
 	@Autowired
 	private PictureService pictureService; 
-	
-	
+
 	@Autowired
 	private ArtistService artistService; 
-
-
+	
+	
 
 	@GetMapping("/admin/picture")
-	public String showPictureInsert(Principal pricipal, Picture picture,Model model){
+	public String showPictureInsert(Picture picture,Model model){
 		List<Artist> artists = artistService.getAll();
 		model.addAttribute("artists",artists);
 		return "admin/pictureInsert";
 	}
+
+	
+
 
 	@PostMapping("/admin/picture")
 	public String checkPictureInfo(@Valid @ModelAttribute Picture picture,
@@ -46,10 +49,14 @@ public class PictureController {
 			return "pictureInsert";
 		}
 		else 
-			
+			picture.setUrl("../img/picture/"+picture.getUrl());
+		
+
+
 			model.addAttribute(picture);
 			pictureService.add(picture); 
 			
+
 		return "pictureInfo";
 	}
 	
@@ -64,4 +71,15 @@ public class PictureController {
 		return "pictureInfo";
 
 	}
+
+	@GetMapping("/picturesList")
+	public String showPicturesList(Model model){
+		
+		List<Picture> pictures = pictureService.getAll();
+		model.addAttribute("pictures", pictures);
+		
+		return "picturesList";
+
+	}
+
 }

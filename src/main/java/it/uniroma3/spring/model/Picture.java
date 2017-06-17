@@ -24,6 +24,12 @@ public class Picture {
 	@NotNull
 	@Size(min=1)
 	private String dimension;
+	
+	@NotNull
+	@Size(min=1)
+	private String url;
+
+	
 
 	@ManyToOne
 	private Artist artist;
@@ -77,6 +83,14 @@ public class Picture {
 
 	public void setArtist(Artist artist) {
 		this.artist = artist;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 

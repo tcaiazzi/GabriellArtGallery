@@ -29,7 +29,7 @@ public class LoginController {
 		if(principal!=null){
 			model.addAttribute(principal);
 		}
-	    return "home";
+	    return "gag";
 	  }
 
 }

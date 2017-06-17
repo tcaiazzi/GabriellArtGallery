@@ -19,10 +19,11 @@ public class RoomController {
 
 
 
+
 	@GetMapping("/admin/room")
 	public String showRoomInsert(Room room){
 
-		return "admin/roomInsert";
+		return "roomInsert";
 	}
 
 	@PostMapping("/admin/room")
@@ -30,13 +31,14 @@ public class RoomController {
 			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			return "admin/roomInsert";
+			return "roomInsert";
 		}
 		else 
 			model.addAttribute(room);
 		roomService.add(room);
 
-		return "admin/roomInsert";
+		return "roomInsert";
+
 
 
 

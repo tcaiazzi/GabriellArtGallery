@@ -25,12 +25,7 @@ public class ArtistController {
 	
 	@Autowired
 	private PictureService pictureService;
-	
-	@GetMapping("/admin/artist")
-	public String showArtistInsert(Artist artist){
-		return "admin/artistInsert";
-	}
-	
+
 	
 	@GetMapping("/showArtist")
 	public String showArtistProfile(Model model,WebRequest request){
@@ -54,18 +49,27 @@ public class ArtistController {
 			return "artistInsert";
 		}
 		else {
+			artist.setUrl("../img/artist/"+artist.getUrl());
 			model.addAttribute(artist);
 			artistService.add(artist); 
 		}
 		return "artistInfo";
+	}
+	@GetMapping("/admin/artistsList")
+	public String showArtistsListAdmin( Model model){
+		List<Artist> artists = artistService.getAll();
+		model.addAttribute("artists", artists);
+		return "artistsList";
 	}
 	
 	@GetMapping("/artistsList")
 	public String showArtistsList( Model model){
 		List<Artist> artists = artistService.getAll();
 		model.addAttribute("artists", artists);
-		return "artistsList";
+		return "artistsListGag";
 	}
+	
+	
 	
 
 }

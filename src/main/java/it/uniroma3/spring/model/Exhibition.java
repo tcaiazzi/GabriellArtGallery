@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -30,6 +28,10 @@ public class Exhibition {
 	@ManyToMany
 	@JoinTable(name = "exhibition_room", joinColumns = @JoinColumn(name = "exhibition_id"), inverseJoinColumns = @JoinColumn(name = "room_id"))
 	private List<Room> rooms;
+	@NotNull
+	@Size(min=1)
+	private String url;
+	
 
 	public Exhibition() {
 		this.rooms = new ArrayList<>();
@@ -67,6 +69,13 @@ public class Exhibition {
 		this.rooms = rooms;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	
 
 	
