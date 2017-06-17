@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
-
-import it.uniroma3.spring.model.Artist;
 import it.uniroma3.spring.model.Exhibition;
-import it.uniroma3.spring.model.Picture;
 import it.uniroma3.spring.model.Room;
 import it.uniroma3.spring.service.ExhibitionService;
 import it.uniroma3.spring.service.RoomService;

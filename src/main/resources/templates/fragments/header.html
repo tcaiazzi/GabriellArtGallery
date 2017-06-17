@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top"
-		th:fragment="header">
+		th:fragment="header-home">
 		<nav class="navbar navbar-default navbar-fixed-top ">
 			<div class="container">
 				<div class="navbar-header">
@@ -42,6 +42,34 @@
 			</div>
 		</nav>
 	</div>
+	
+	
+	<div id="navbarWrapper" class="admin-navbar" th:fragment="header-admin">
+			<nav class="navbar-default navbar-side" role="navigation">
+				<div class="sidebar-collapse">
+					<ul class="nav" id="main-menu">
+						<li class="text-center"><img src="../img/find_user.png"
+							class="user-image img-responsive" />
+							<form th:action="@{/logout}" method="post">
+								<button type="submit" class="btn btn-default" value="Sign Out">Sign
+									Out</button>
+							</form></li>
+
+						<li><a href="/admin/artist"><i class="fa fa-edit fa-3x"></i>
+								Artist</a></li>
+						<li><a href="/admin/picture"><i class="fa fa-edit fa-3x"></i>
+								Picture</a></li>
+						<li><a href="/admin/exhibition"><i class="fa fa-edit fa-3x"></i>
+								Exhibition </a></li>
+
+						<li><a href="/admin/profile"><i class="fa fa-square-o fa-3x"></i>
+								Profile</a></li>
+					</ul>
+
+				</div>
+
+			</nav>
+		</div>
 
 </body>
 </html>
