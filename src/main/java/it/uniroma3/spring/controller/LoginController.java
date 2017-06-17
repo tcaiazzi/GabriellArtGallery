@@ -27,7 +27,6 @@ public class LoginController {
 	  @RequestMapping({"/", "/index"})
 	  public String home(Principal principal, Model model) {
 		if(principal!=null){
-			System.out.println(principal.toString());
 			model.addAttribute(principal);
 		}
 	    return "home";

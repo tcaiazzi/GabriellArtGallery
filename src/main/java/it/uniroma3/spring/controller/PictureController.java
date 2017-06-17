@@ -1,6 +1,6 @@
 package it.uniroma3.spring.controller;
 
-import java.util.List;
+import java.security.Principal;
 
 
 import javax.validation.Valid;
@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
-
-import it.uniroma3.spring.model.Artist;
 import it.uniroma3.spring.model.Picture;
-import it.uniroma3.spring.service.ArtistService;
 import it.uniroma3.spring.service.PictureService;
 
 @Controller
@@ -24,21 +21,16 @@ public class PictureController {
 
 	@Autowired
 	private PictureService pictureService; 
-	@Autowired
-	private ArtistService artistService; 
+	
 	
 	
 
 
 
 	@GetMapping("/admin/picture")
-	public String showPictureInsert(Picture picture,Model model){
-		
-		List<Artist> artists = artistService.getAll();
-		model.addAttribute("artists",artists);
-		
+	public String showPictureInsert(Principal pricipal, Picture picture,Model model){
+	
 		return "admin/pictureInsert";
-
 	}
 
 	@PostMapping("/admin/picture")
@@ -52,7 +44,6 @@ public class PictureController {
 			
 			model.addAttribute(picture);
 			pictureService.add(picture); 
-			
 			
 		return "pictureInfo";
 	}
