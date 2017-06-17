@@ -37,7 +37,7 @@ public class ExhibitionController {
 		model.addAttribute("rooms", rooms);
 		
 		
-		return "exhibitionInsert";
+		return "admin/exhibitionInsert";
 	}
 	
 	@PostMapping("/admin/exhibition")
@@ -45,7 +45,7 @@ public class ExhibitionController {
 			BindingResult bindingResult, Model model,WebRequest request) {
 		
 		if (bindingResult.hasErrors()) {
-			return "exhibitionInsert";
+			return "admin/exhibitionInsert";
 		}
 		else 
 		exhibition.setUrl("../img/exhibition/"+exhibition.getUrl());
@@ -55,7 +55,7 @@ public class ExhibitionController {
 
 		
 		
-	return "exhibitionInfo";
+	return "admin/exhibitionInfo";
 			
 
 		
@@ -73,14 +73,14 @@ public class ExhibitionController {
 		model.addAttribute("rooms", rooms);
 		
 		
-		return "exhibitionInfo";
+		return "admin/exhibitionInfo";
 	}
 	
 	@GetMapping("/admin/exhibitionsList")
 	public String showExhibitionsListAdmin( Model model){
 		List<Exhibition> exhibitions = exhibitionService.getAll();
 		model.addAttribute("exhibitions", exhibitions);
-		return "exhibitionsList";
+		return "admin/exhibitionsList";
 	}
 	
 	@GetMapping("/exhibitionsList")

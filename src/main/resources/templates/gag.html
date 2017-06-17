@@ -4,6 +4,15 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script><meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="description" content="" />
@@ -25,7 +34,7 @@
 
 </head>
 
-<body>
+<body ng-app="app" ng-controller="home as home">
 	<div class="wrapper">
 		<div class="bg">
 			<!-- Fixed navbar -->
@@ -234,6 +243,33 @@
     // ]]>
 </script>
 	<script src="js/bootstrap.min.js"></script>
+	
+	
+	
+	<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
+	<script type="text/javascript">
+    angular.module("app", [])
+        .config(function($httpProvider) {
+              $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+            }).controller("home", function($http, $location) {
+          var self = this;
+          $http.get("/user").success(function(data) {
+            if (data.userAuthentication) {
+              if(data.userAuthentication.details.name)
+                self.user = data.userAuthentication.details.name;
+              else
+                self.user = data.principal              
+            } else if(data.principal){
+              self.user = data.principal.username;              
+            }
+            
+            
+          }).error(function() {            
+            
+          });
+          
+        });
+  </script>
 
 </body>
 </html>

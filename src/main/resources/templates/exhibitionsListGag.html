@@ -25,43 +25,12 @@
 
 </head>
 
-<body>
+<body ng-app="app" ng-controller="home as home">
 	<div class="wrapper">
 		<div class="bg">
 			<!-- Fixed navbar -->
-			<nav class="navbar navbar-default navbar-fixed-top ">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed"
-							data-toggle="collapse" data-target="#navbar"
-							aria-expanded="false" aria-controls="navbar">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">GabriellArtGallery</a>
-					</div>
-					<div id="navbar" class="navbar-collapse collapse">
-						<ul class="nav navbar-nav">
-							<li class="active"><a href="/gag">Home</a></li>
-							<li><a href="/exhibitionsList">Event</a></li>
-							<li><a href="#about">Exhibition</a></li>
-							<li><a href="/artistsList">Artists</a></li>
-							<li><a href="#photo">Photo</a></li>
-							<li></li>
-							<li></li>
-
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#about">About us</a></li>
-							<li><a href="#contact">Contact</a></li>
-							<li class="active"><a href="./"> Sign in <span
-									class="sr-only">(current)</span></a></li>
-						</ul>
-					</div>
-					<!--/.nav-collapse -->
-				</div>
-			</nav>
+			<div th:replace="fragments/header :: header-home">
+			 </div>
 			<div id="page-inner">
 				<div class="container">
 					<div class="row" th:each="exhibition : ${exhibitions}">
@@ -106,6 +75,31 @@
 		// ]]>
 	</script>
 	<script src="js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
+	<script type="text/javascript">
+    angular.module("app", [])
+        .config(function($httpProvider) {
+              $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+            }).controller("home", function($http, $location) {
+          var self = this;
+          $http.get("/user").success(function(data) {
+            if (data.userAuthentication) {
+              if(data.userAuthentication.details.name)
+                self.user = data.userAuthentication.details.name;
+              else
+                self.user = data.principal              
+            } else if(data.principal){
+              self.user = data.principal.username;              
+            }
+            
+            
+          }).error(function() {            
+            
+          });
+          
+        });
+  </script>
 
 </body>
 </html>

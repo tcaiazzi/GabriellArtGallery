@@ -25,7 +25,16 @@ public class ArtistController {
 	
 	@Autowired
 	private PictureService pictureService;
+	
 
+	@GetMapping("/admin/artist")
+	public String showArtistInsert(Artist artist){
+	return "admin/artistInsert";
+	}
+	
+	
+
+	
 	
 	@GetMapping("/showArtist")
 	public String showArtistProfile(Model model,WebRequest request){
@@ -46,20 +55,20 @@ public class ArtistController {
 			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			return "artistInsert";
+			return "admin/artistInsert";
 		}
 		else {
 			artist.setUrl("../img/artist/"+artist.getUrl());
 			model.addAttribute(artist);
 			artistService.add(artist); 
 		}
-		return "artistInfo";
+		return "admin/artistInfo";
 	}
 	@GetMapping("/admin/artistsList")
 	public String showArtistsListAdmin( Model model){
 		List<Artist> artists = artistService.getAll();
 		model.addAttribute("artists", artists);
-		return "artistsList";
+		return "admin/artistsList";
 	}
 	
 	@GetMapping("/artistsList")

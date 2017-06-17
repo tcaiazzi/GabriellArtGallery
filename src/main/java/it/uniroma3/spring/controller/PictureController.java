@@ -46,7 +46,7 @@ public class PictureController {
 			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			return "pictureInsert";
+			return "admin/pictureInsert";
 		}
 		else 
 			picture.setUrl("../img/picture/"+picture.getUrl());
@@ -57,7 +57,7 @@ public class PictureController {
 			pictureService.add(picture); 
 			
 
-		return "pictureInfo";
+		return "admin/pictureInfo";
 	}
 	
 	@GetMapping("/showPicture")
@@ -68,17 +68,17 @@ public class PictureController {
 		Picture pic = pictureService.find(id);
 		model.addAttribute(pic);
 		
-		return "pictureInfo";
+		return "admin/pictureInfo";
 
 	}
 
-	@GetMapping("/picturesList")
+	@GetMapping("/admin/picturesList")
 	public String showPicturesList(Model model){
 		
 		List<Picture> pictures = pictureService.getAll();
 		model.addAttribute("pictures", pictures);
 		
-		return "picturesList";
+		return "admin/picturesList";
 
 	}
 
