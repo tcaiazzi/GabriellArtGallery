@@ -24,7 +24,7 @@ public class LoginController {
 	  }
 	
 
-	  @RequestMapping({"/", "/index"})
+	  @RequestMapping({"/", "/index", "/gag"})
 	  public String home(Principal principal, Model model) {
 		if(principal!=null){
 			model.addAttribute(principal);

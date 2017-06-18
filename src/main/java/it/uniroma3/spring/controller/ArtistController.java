@@ -36,7 +36,7 @@ public class ArtistController {
 
 	
 	
-	@GetMapping("/showArtist")
+	@GetMapping("/admin/showArtist")
 	public String showArtistProfile(Model model,WebRequest request){
 		/*setting artist to show*/
 		Long id = Long.parseLong(request.getParameter("id"));

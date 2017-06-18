@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
@@ -47,10 +46,9 @@
 									<div class="col-md-12">
 										<h3></h3>
 										<ul class="list-group">
-											<th:block th:object="${artist}">
-												<li class="list-group-item" th:each="artist : ${artists}">
-													<p th:text="${artist.surname}+ ' ' +  ${artist.name}" /> <a
-													th:href="@{/admin/showArtist(id=${artist.id})}"> view profile</a>
+											<th:block th:object="${permission}">
+												<li class="list-group-item" th:each="permission : ${permissions}">
+													<p th:text="${permission.username} + ' ' +  ${permission.role}" /> 
 												</li>
 											</th:block>
 										</ul>

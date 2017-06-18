@@ -44,7 +44,7 @@
 								<h2 th:text="${exhibition.name}"></h2>
 								<hr></hr>
 								<p th:text="${exhibition.description}" />
-								<a th:href="@{/showExhibition(id=${exhibition.id})}"> more
+								<a th:href="@{/showExhibition(id=${exhibition.id}, name=${exhibition.name})}"> more
 									info</a>
 							</section>
 						</div>

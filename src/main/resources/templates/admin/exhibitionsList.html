@@ -48,7 +48,7 @@
 											<th:block th:object="${artist}">
 											<li class="list-group-item" th:each="exhibition : ${exhibitions}">
 											<p th:text="${exhibition.name}" />
-											<a th:href="@{/showExhibition(id=${exhibition.id}, name=${exhibition.name})}"> view profile</a>
+											<a th:href="@{/admin/showExhibition(id=${exhibition.id}, name=${exhibition.name})}"> view profile</a>
 											</li>
 											</th:block>
 										</ul>

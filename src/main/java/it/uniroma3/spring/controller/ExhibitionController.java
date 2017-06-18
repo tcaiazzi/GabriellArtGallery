@@ -81,7 +81,7 @@ public class ExhibitionController {
 		
 	}
 	
-	@GetMapping("/showExhibition")
+	@GetMapping("/admin/showExhibition")
 	public String showExhibitionInfo(Exhibition exhibition,Model model,WebRequest request){
 		
 		Long id = Long.parseLong(request.getParameter("id"));
