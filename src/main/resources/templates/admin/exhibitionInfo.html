@@ -61,6 +61,13 @@
 												<p th:text="${room.name}" /> <a
 												th:href="@{/showRoom(id=${room.id})}">view room</a>
 											</li>
+											
+											<h6>Reservations</h6>
+											<li class="list-group-item" th:each="reservation : ${reservations}">
+												<p th:text="${reservation.username}" /> 
+											</li>
+											
+											
 										</ul>
 
 

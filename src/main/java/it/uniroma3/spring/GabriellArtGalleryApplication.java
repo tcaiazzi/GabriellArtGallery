@@ -46,7 +46,7 @@ public class GabriellArtGalleryApplication extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	@RequestMapping("/user")
+	@RequestMapping("/userinfo")
 	public Principal user(Principal principal) {
 		return principal;
 	}

@@ -18,6 +18,7 @@ public class ExhibitionService {
 
 	@Transactional
 	public void add(Exhibition exhibition) {
+		
 		this.exhibitionRepository.save(exhibition);
 		
 	}

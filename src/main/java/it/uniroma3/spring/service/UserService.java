@@ -1,6 +1,8 @@
 package it.uniroma3.spring.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -47,9 +49,14 @@ public class UserService {
 	public User findUserById(Long id){
 		return this.userRepository.findById(id);
 	}
+	
+	public List<User> findAll(){
+		return this.userRepository.findAll();
+	}
 
 
 
+	@Transactional
 	public void confirmUserAccount(Long id) {
 		User user = findUserById(id);
 		user.setEnabled(true);

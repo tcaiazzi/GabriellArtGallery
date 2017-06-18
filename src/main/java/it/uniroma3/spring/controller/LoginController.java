@@ -23,7 +23,7 @@ public class LoginController {
 	    return "login";
 	  }
 	
-	  // Login form
+
 	  @RequestMapping({"/", "/index"})
 	  public String home(Principal principal, Model model) {
 		if(principal!=null){
