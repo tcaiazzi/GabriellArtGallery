@@ -1,5 +1,6 @@
 package it.uniroma3.spring.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +25,10 @@ public class Picture {
 	@NotNull
 	@Size(min=1)
 	private String dimension;
+	@NotNull
+	@Size(min=1)
+	@Column(length=1024)
+	private String description;
 	
 	@NotNull
 	@Size(min=1)
@@ -91,6 +96,14 @@ public class Picture {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 

@@ -23,7 +23,21 @@ public class RoomController {
 	@GetMapping("/admin/room")
 	public String showRoomInsert(Room room){
 
-		return "roomInsert";
+		return "admin/roomInsert";
+	}
+	
+	
+	@GetMapping("/admin/roomsList")
+	public String showRoomsList(Room room){
+
+		return "admin/roomsList";
+	}
+	
+	
+	@GetMapping("/admin/showRoom")
+	public String showRoomsInfo(Room room){
+
+		return "admin/roomsList";
 	}
 
 	@PostMapping("/admin/room")
@@ -31,17 +45,13 @@ public class RoomController {
 			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			return "roomInsert";
+			return "admin/roomInsert";
 		}
 		else 
 			model.addAttribute(room);
 		roomService.add(room);
 
-		return "roomInsert";
-
-
-
-
+		return "admin/roomInsert";
 	}
 
 

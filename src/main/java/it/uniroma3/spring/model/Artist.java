@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +32,10 @@ public class Artist {
 	@NotNull
 	@Size(min=1)
 	private String nationality; 
-
+	@NotNull
+	@Size(min=1)
+	@Column(length=1024)
+	private String description;
 	@NotNull
 	@Size(min=1)
 	private String url;
@@ -116,6 +120,16 @@ public class Artist {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override

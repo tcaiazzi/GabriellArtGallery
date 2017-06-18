@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GabriellArtGallery-Admin</title>
+<!-- BOOTSTRAP STYLES-->
+<link href="../css/bootstrap.css" rel="stylesheet" />
+<!-- FONTAWESOME STYLES-->
+<link href="../css/font-awesome.css" rel="stylesheet" />
+<!-- MORRIS CHART STYLES-->
+<link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+<!-- CUSTOM STYLES-->
+<link href="../css/custom.css" rel="stylesheet" />
+<!-- GOOGLE FONTS-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css' />
+</head>
+<body>
+	<div id="wrapper">
+		 <div th:replace="fragments/header :: header-admin-top">
+		 </div>
+		<!-- /. NAV TOP  -->
+		 <div th:replace="fragments/header :: header-admin">
+		 </div>
+		<!-- /. NAV SIDE  -->
+		<div id="page-wrapper">
+			<div id="page-inner">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>Admin Dashboard</h2>
+						<h5>Manage GaG artist</h5>
+					</div>
+				</div>
+				<!-- /. ROW  -->
+				<hr />
+				<div class="row">
+
+					<div class="col-md-12">
+						<!-- Form Elements -->
+						<div class="panel panel-default">
+							<div class="panel-heading">Picture List</div>
+							<div class="row">
+								<div class="panel-body">
+									<div class="col-md-12">
+										<h3></h3>
+										<ul class="list-group">
+											<th:block th:object="${picture}">
+											<li class="list-group-item" th:each="picture : ${pictures}">
+											<p th:text="${picture.title}" />
+											<a th:href="@{/showPicture(id=${picture.id})}"> view detail</a>
+											</li>
+											</th:block>
+										</ul>
+										
+
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /. PAGE WRAPPER  -->
+			</div>
+		</div>
+	</div>
+		<!-- /. WRAPPER  -->
+		<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+		<!-- JQUERY SCRIPTS -->
+		<script src="../js/jquery-1.10.2.js"></script>
+		<!-- BOOTSTRAP SCRIPTS -->
+		<script src="../js/bootstrap.min.js"></script>
+		<!-- METISMENU SCRIPTS -->
+		<script src="../js/jquery.metisMenu.js"></script>
+		<!-- MORRIS CHART SCRIPTS -->
+		<script src="../js/morris/raphael-2.1.0.min.js"></script>
+		<script src="../js/morris/morris.js"></script>
+		<!-- CUSTOM SCRIPTS -->
+		<script src="../js/custom.js"></script>
+</body>
+</html>
+

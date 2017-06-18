@@ -2008,6 +2008,11 @@ select[multiple].input-lg {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
+  margin-top: 20px;
+  width: 100px;
+}
+.btn-login{
+	 width: 80px;
 }
 .btn:focus,
 .btn:active:focus,

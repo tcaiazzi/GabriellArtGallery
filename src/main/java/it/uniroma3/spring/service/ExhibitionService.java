@@ -18,6 +18,7 @@ public class ExhibitionService {
 
 	@Transactional
 	public void add(Exhibition exhibition) {
+		
 		this.exhibitionRepository.save(exhibition);
 		
 	}
@@ -27,6 +28,7 @@ public class ExhibitionService {
 	}
 
 	public Exhibition find(Long id) {
+		
 		return this.exhibitionRepository.findOne(id);
 	}
 

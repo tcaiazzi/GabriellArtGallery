@@ -19,10 +19,10 @@ public class HtmlMessagePreparator {
 	}
 	
 	
-	public String newExhibitionMessage(Long id, String name, Date date){
+	public String newExhibitionMessage(Long id, String name){
 		// message contains HTML markups
 		String message = "<i>We are pleasure to present "+name+" our new Exhibition!</i><br>";
-		message += "<b>We invite you to it! "+"<a href ="+"\"http://localhost:8080/signUp/confirm?id="+id+"&name="+name+"\">";
+		message += "<b>We invite you to it! "+"<a href ="+"\"http://localhost:8080/reservation/confirm?id="+id+"&name="+name+"\">";
 		message += "Click here to take a reservation!</a>";
 		message += "<b>Wish you a nice day!</b><br>";
 		message += "<font color=red>Ermete</font>";

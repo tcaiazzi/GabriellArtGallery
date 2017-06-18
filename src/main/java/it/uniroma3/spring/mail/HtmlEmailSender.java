@@ -2,6 +2,7 @@ package it.uniroma3.spring.mail;
 
 
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -15,6 +16,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.stereotype.Service;
+
+import it.uniroma3.spring.model.User;
 
 @Service
 public class HtmlEmailSender {
@@ -73,6 +76,15 @@ public class HtmlEmailSender {
 			System.out.println("Failed to sent email.");
 			ex.printStackTrace();
 		}
+	}
+
+
+	public void prepareEmailforAllUsers(List<User> users, String subject, String message) {
+		
+		for(User u:users){
+			this.prepareEmail(u.getEmail(), subject, message);
+		}
+		
 	}
 
 
