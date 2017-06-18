@@ -28,6 +28,7 @@ public class ExhibitionService {
 	}
 
 	public Exhibition find(Long id) {
+		
 		return this.exhibitionRepository.findOne(id);
 	}
 

@@ -18,6 +18,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
@@ -62,6 +63,13 @@ public class GabriellArtGalleryApplication extends WebSecurityConfigurerAdapter{
 		.authoritiesByUsernameQuery("select username, role from permission where username=?");
 		
 	}
+	
+	@Override
+	  public void configure(WebSecurity web) throws Exception {
+	    web
+	    .ignoring()
+	    .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/fonts/**");
+	  }
 	
 	
 

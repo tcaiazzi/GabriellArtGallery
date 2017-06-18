@@ -20,6 +20,9 @@ public class RoomService {
 	public List<Room> findAll(){
 		return (List<Room>) this.roomRepository.findAll();
 	}
+	
+
+
 
 	public void add(Room room) {
 		this.roomRepository.save(room)		;

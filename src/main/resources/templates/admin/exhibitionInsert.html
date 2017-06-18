@@ -57,23 +57,39 @@
 												</p>
 											</div>
 											<div class="form-group">
-												<label>Description:</label> <input class="form-control"
-													th:field="*{description}" />
+												<label>Description:</label> <textarea class="form-control" rows="5"
+													th:field="*{description}" ></textarea>
 												<p class="help-block">
 													<span th:if="${#fields.hasErrors('description')}"
 														th:text="#{label.mandatory}"></span>
 												</p>
 											</div>
 											<div class="form-group">
+												<label>Start Date:</label> <input class="form-control"
+													th:field="*{startDate}" />
+												<p class="help-block">
+													<span th:if="${#fields.hasErrors('startDate')}"
+														th:text="#{label.mandatory}"></span>
+												</p>
+											</div>
+											<div class="form-group">
+												<label>End Date:</label> <input class="form-control"
+													th:field="*{endDate}" />
+												<p class="help-block">
+													<span th:if="${#fields.hasErrors('endDate')}"
+														th:text="#{label.mandatory}"></span>
+												</p>
+											</div>
+											<div class="form-group">
 												<label>Flyer (img url):</label> <input class="form-control file"
-													th:field="*{url}" th:type="file" />
+													th:field="*{url}" th:type="file"  />
 												<p class="help-block">
 													
 												</p>
 											</div>
 											<div class="form-group">
 												<label>Rooms:</label> 
-													<select class="form-control" size="4" multiple="multiple">
+													<select class="form-control" size="4" th:field="*{rooms}" multiple="multiple" >
 												<option th:each="room : ${rooms}" th:value="${room.id}" th:text="${room.name}">
 											</option>
 												</select>

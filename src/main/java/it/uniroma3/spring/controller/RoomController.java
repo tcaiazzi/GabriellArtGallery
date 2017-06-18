@@ -32,6 +32,13 @@ public class RoomController {
 
 		return "admin/roomsList";
 	}
+	
+	
+	@GetMapping("/admin/showRoom")
+	public String showRoomsInfo(Room room){
+
+		return "admin/roomsList";
+	}
 
 	@PostMapping("/admin/room")
 	public String checkRoomInfo(@Valid @ModelAttribute Room room,

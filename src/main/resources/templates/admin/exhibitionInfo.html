@@ -57,9 +57,9 @@
 
 										<ul>
 											<h6>Exhibition's Room</h6>
-											<li class="list-group-item" th:each="room : ${rooms}">
+											<li class="list-group-item" th:each="room : ${exhibition.rooms}">
 												<p th:text="${room.name}" /> <a
-												th:href="@{/showRoom(id=${room.id})}">view room</a>
+												th:href="@{/admin/showRoom(id=${room.id})}">view room</a>
 											</li>
 											
 											<h6>Reservations</h6>
@@ -100,4 +100,4 @@
 </body>
 </html>
 
->>>>>>> branch 'develop' of https://github.com/tcaiazzi/GabriellArtGallery.git
+

@@ -72,7 +72,7 @@ public class ExhibitionController {
 		exhibitionService.add(exhibition); 
 		List<User> users = userService.findAll();
 		emailSender.prepareEmailforAllUsers(users, "New exhibition: " +exhibition.getName(), messagePreparator.newExhibitionMessage(exhibition.getId(), exhibition.getName()));
-
+		request.getParameter("rooms");
 		
 		
 	return "admin/exhibitionInfo";
@@ -82,15 +82,12 @@ public class ExhibitionController {
 	}
 	
 	@GetMapping("/admin/showExhibition")
-	public String showExhibitionInfo(Exhibition exhibition,Model model,WebRequest request){
+	public String showExhibitionInfo(Model model,WebRequest request){
 		
 		Long id = Long.parseLong(request.getParameter("id"));
-		Exhibition ex = exhibitionService.find(id);
-		model.addAttribute(ex);
-		
-		
-		List<Room> rooms = roomService.findAll();
-		model.addAttribute("rooms", rooms);
+		Exhibition exhibition = exhibitionService.find(id);
+		model.addAttribute("exhibition", exhibition);
+		System.out.println(exhibition.getRooms());
 		
 		String name = request.getParameter("name");
 		List<Reservation> reservations = reservationService.findReservationByExhibitionName(name);
@@ -98,6 +95,19 @@ public class ExhibitionController {
 		
 		
 		return "admin/exhibitionInfo";
+	}
+	
+	
+	
+	@GetMapping("/showExhibition")
+	public String showExhibitionInfoGag(Exhibition exhibition,Model model,WebRequest request){
+		
+		Long id = Long.parseLong(request.getParameter("id"));
+		Exhibition ex = exhibitionService.find(id);
+		model.addAttribute(ex);
+		List<Room> rooms = roomService.findAll();
+		model.addAttribute("rooms", rooms);
+		return "exhibitionInfoGag";
 	}
 	
 	@GetMapping("/admin/exhibitionsList")

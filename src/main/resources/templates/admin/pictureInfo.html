@@ -19,11 +19,9 @@
 </head>
 <body>
 	<div id="wrapper">
-		 <div th:replace="fragments/header :: header-admin-top">
-		 </div>
+		<div th:replace="fragments/header :: header-admin-top"></div>
 		<!-- /. NAV TOP  -->
-		 <div th:replace="fragments/header :: header-admin">
-		 </div>
+		<div th:replace="fragments/header :: header-admin"></div>
 		<!-- /. NAV SIDE  -->
 		<div id="page-wrapper">
 			<div id="page-inner">
@@ -48,16 +46,19 @@
 											<li class="list-group-item"><p
 													th:text="'Title: ' + ${picture.title}" /></li>
 											<li class="list-group-item"><p
+													th:text="'Artist: ' + ${picture.artist.name} + ' ' + ${picture.artist.surname}" /></li>
+											<li class="list-group-item"><p
 													th:text="'Year: ' + ${picture.year}" /></li>
 											<li class="list-group-item"><p
 													th:text="'Medium: ' + ${picture.medium}" /></li>
 											<li class="list-group-item"><p
 													th:text="'Dimension: ' + ${picture.dimension}" /></li>
+
 											<li class="list-group-item"><p
-													th:text="'Url: ' + ${picture.url}" />
-												<img th:src="${picture.url}"></img></li>
+													th:text="'Url: ' + ${picture.url}" /> <img
+												th:src="${picture.url}"></img></li>
 											<li class="list-group-item"><p
-													th:text="'Artist: ' + ${picture.artist.id}" /></li>
+													th:text="'Description: ' + ${picture.description}" /></li>
 										</ul>
 
 
