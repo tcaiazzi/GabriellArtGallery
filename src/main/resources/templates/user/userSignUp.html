@@ -1,47 +1,176 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>New Picture</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-	<form action="#" th:action="@{/signUp}" th:object="${user}"
-		method="post">
-		<div>
-			<div>
-				<span th:text="#{label.name}">Name: </span> <span><input
-					type="text" th:field="*{name}" /></span> <span
-					th:if="${#fields.hasErrors('name')}" th:text="#{label.mandatory}">Error</span>
-			</div>
-			<div>
-				<span th:text="#{label.surname}">Surname: </span> <span><input
-					type="text" th:field="*{surname}" /></span> <span
-					th:if="${#fields.hasErrors('surname')}"
-					th:text="#{label.mandatory}">Error</span>
-			</div>
-			<div>
-				Email: <span><input type="text" th:field="*{email}" /></span> <span
-					th:if="${#fields.hasErrors('email')}" th:text="#{label.emailMandatory}">Error</span>
-			</div>
-			<div>
-				Username: <span><input
-					type="text" th:field="*{username}" /></span> <span
-					th:if="${#fields.hasErrors('username')}"
-					th:text="#{label.mandatory}">Error</span>
-			</div>
-			<div>
-				Password:  <span><input
-					type="text" th:field="*{password}" /></span> <span
-					th:if="${#fields.hasErrors('password')}"
-					th:text="#{label.mandatory}">Error</span>
-			</div>
-			<div>
+<!DOCTYPE html>
 
-				<div>
-					<span><button type="submit">Submit</button></span>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springSecurity4">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<base href="/" />
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link rel="icon" href="../../favicon.ico" />
+
+<title>GAG | Home</title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/gag.css" rel="stylesheet" />
+
+
+
+<!-- Custom styles for this template -->
+<link href="css/navbar-fixed-top.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Monoton"
+	rel="stylesheet" />
+
+</head>
+
+<body ng-app="app" ng-controller="home as home">
+	<div class="wrapper">
+		<div class="bg-login">
+
+			<div th:replace="fragments/header :: header-home"></div>
+			<div id="page-inner">
+				<div class="container">
+					<div class="row">
+
+						<div class="main">
+
+							<h3>
+								Sign up or <a href="/login">Login</a>
+							</h3>
+							
+
+							<form  th:action="@{/signUp}" th:object="${user}"
+								method="post">
+								<fieldSet>
+									<div>
+										<div>
+											<span th:text="#{label.name}">Name: </span> <span><input
+												class="form-control" type="text" th:field="*{name}" /></span> <span
+												th:if="${#fields.hasErrors('name')}"
+												th:text="#{label.mandatory}">Error</span>
+										</div>
+										<div>
+											<span th:text="#{label.surname}">Surname: </span> <span><input
+												class="form-control" type="text" th:field="*{surname}" /></span> <span
+												th:if="${#fields.hasErrors('surname')}"
+												th:text="#{label.mandatory}">Error</span>
+										</div>
+										<div>
+											Email: <span><input class="form-control" type="text"
+												th:field="*{email}" /></span> <span
+												th:if="${#fields.hasErrors('email')}"
+												th:text="#{label.emailMandatory}">Error</span>
+										</div>
+										<div>
+											Username: <span><input type="text"
+												class="form-control" th:field="*{username}" /></span> <span
+												th:if="${#fields.hasErrors('username')}"
+												th:text="#{label.mandatory}">Error</span>
+										</div>
+										<div>
+											Password: <span><input class="form-control"
+												type="password" th:field="*{password}" /></span> <span
+												th:if="${#fields.hasErrors('password')}"
+												th:text="#{label.mandatory}">Error</span>
+										</div>
+										<div>
+
+											<div class="row">
+												<div class="col-sm-2">
+													<div class="form-actions">
+														<button type="submit"
+															class="btn btn btn-primary btn-login"
+															 aria-pressed="false">Sign
+															up</button>
+													</div>
+												</div>
+												<div class="col-sm-2">
+													<a href="/login" class="btn btn btn-success btn-login"
+														aria-pressed="false">Login</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</fieldSet>
+							</form>
+
+						</div>
+
+					</div>
 				</div>
 			</div>
 		</div>
-	</form>
+		<footer class="footer">
+			<div class="container">
+				<p class="text-muted">Place sticky footer content here.</p>
+			</div>
+		</footer>
+	</div>
+
+
+
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		// <![CDATA[
+		window.jQuery
+				|| document
+						.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>');
+		// ]]>
+	</script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
+	<script type="text/javascript">
+		angular
+				.module("app", [])
+				.config(
+						function($httpProvider) {
+							$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+						})
+				.controller(
+						"home",
+						function($http, $location) {
+							var self = this;
+							$http
+									.get("/userinfo")
+									.success(
+											function(data) {
+												if (data.userAuthentication) {
+													if (data.userAuthentication.details.name)
+														self.user = data.userAuthentication.details.name;
+													else
+														self.user = data.principal
+												} else if (data.principal) {
+													self.user = data.principal.username;
+												}
+
+											}).error(function() {
+
+									});
+
+						});
+	</script>
+
+
+
 </body>
 </html>
