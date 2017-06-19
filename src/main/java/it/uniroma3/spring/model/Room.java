@@ -1,6 +1,7 @@
 package it.uniroma3.spring.model;
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Column;
@@ -20,7 +21,7 @@ public class Room {
 	private String name; 
 	private String description;
 	@OneToMany
-	private Map<String,Picture> pictures;
+	private List<Picture> pictures;
 	
 	public Room() {
 		// TODO Auto-generated constructor stub
@@ -50,14 +51,15 @@ public class Room {
 		this.description = description;
 	}
 
-	public Map<String, Picture> getQuadri() {
+	public List<Picture> getPictures() {
 		return pictures;
 	}
 
-	public void setQuadri(Map<String, Picture> paintings) {
-		this.pictures = paintings;
+	public void setPictures(List<Picture> pictures) {
+		this.pictures = pictures;
 	}
 
+	
 	
 
 }

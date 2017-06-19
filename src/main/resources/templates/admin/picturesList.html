@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,11 +19,9 @@
 </head>
 <body>
 	<div id="wrapper">
-		 <div th:replace="fragments/header :: header-admin-top">
-		 </div>
+		<div th:replace="fragments/header :: header-admin-top"></div>
 		<!-- /. NAV TOP  -->
-		 <div th:replace="fragments/header :: header-admin">
-		 </div>
+		<div th:replace="fragments/header :: header-admin"></div>
 		<!-- /. NAV SIDE  -->
 		<div id="page-wrapper">
 			<div id="page-inner">
@@ -46,13 +45,17 @@
 										<h3></h3>
 										<ul class="list-group">
 											<th:block th:object="${picture}">
-											<li class="list-group-item" th:each="picture : ${pictures}">
-											<p th:text="${picture.title}" />
-											<a th:href="@{/showPicture(id=${picture.id})}"> view detail</a>
-											</li>
+												<li class="list-group-item" th:each="picture : ${pictures}">
+													<p th:text="${picture.title}" /> <a
+													th:href="@{/admin/showPicture(id=${picture.id})}"
+													class="btn btn-default">Detail</a> <a
+													th:href="@{/admin/deletePicture(id=${picture.id})}"
+													class="btn btn-danger">Delete </a>
+												</li>
+
 											</th:block>
 										</ul>
-										
+
 
 
 									</div>
@@ -66,19 +69,19 @@
 			</div>
 		</div>
 	</div>
-		<!-- /. WRAPPER  -->
-		<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-		<!-- JQUERY SCRIPTS -->
-		<script src="../js/jquery-1.10.2.js"></script>
-		<!-- BOOTSTRAP SCRIPTS -->
-		<script src="../js/bootstrap.min.js"></script>
-		<!-- METISMENU SCRIPTS -->
-		<script src="../js/jquery.metisMenu.js"></script>
-		<!-- MORRIS CHART SCRIPTS -->
-		<script src="../js/morris/raphael-2.1.0.min.js"></script>
-		<script src="../js/morris/morris.js"></script>
-		<!-- CUSTOM SCRIPTS -->
-		<script src="../js/custom.js"></script>
+	<!-- /. WRAPPER  -->
+	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<!-- JQUERY SCRIPTS -->
+	<script src="../js/jquery-1.10.2.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script src="../js/bootstrap.min.js"></script>
+	<!-- METISMENU SCRIPTS -->
+	<script src="../js/jquery.metisMenu.js"></script>
+	<!-- MORRIS CHART SCRIPTS -->
+	<script src="../js/morris/raphael-2.1.0.min.js"></script>
+	<script src="../js/morris/morris.js"></script>
+	<!-- CUSTOM SCRIPTS -->
+	<script src="../js/custom.js"></script>
 </body>
 </html>
 

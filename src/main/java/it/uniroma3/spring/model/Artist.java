@@ -1,9 +1,11 @@
 package it.uniroma3.spring.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+
 
 @Entity
 public class Artist {
@@ -51,11 +55,11 @@ public class Artist {
 	@Temporal(TemporalType.DATE)
 	private Date deathDate;
 
-	@OneToMany(mappedBy = "artist" )
-	private Map<String,Picture> pictures;
+	@OneToMany(mappedBy = "artist",  cascade = CascadeType.REMOVE)
+	private List<Picture> pictures;
 
 	public Artist() {
-		this.pictures = new HashMap<>();	
+		this.pictures = new ArrayList<>();	
 	}
 
 	public Long getId() {
@@ -106,14 +110,16 @@ public class Artist {
 		this.deathDate = deathDate;
 	}
 
-	public Map<String, Picture> getPictures() {
+	
+	
+	public List<Picture> getPictures() {
 		return pictures;
 	}
 
-	public void setPictures(Map<String, Picture> pictures) {
+	public void setPictures(List<Picture> pictures) {
 		this.pictures = pictures;
 	}
-	
+
 	public String getUrl() {
 		return url;
 	}

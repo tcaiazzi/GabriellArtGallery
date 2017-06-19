@@ -20,11 +20,9 @@
 </head>
 <body>
 	<div id="wrapper">
-		 <div th:replace="fragments/header :: header-admin-top">
-		 </div>
+		<div th:replace="fragments/header :: header-admin-top"></div>
 		<!-- /. NAV TOP  -->
-		 <div th:replace="fragments/header :: header-admin">
-		 </div>
+		<div th:replace="fragments/header :: header-admin"></div>
 		<!-- /. NAV SIDE  -->
 		<div id="page-wrapper">
 			<div id="page-inner">
@@ -49,8 +47,11 @@
 										<ul class="list-group">
 											<th:block th:object="${artist}">
 												<li class="list-group-item" th:each="artist : ${artists}">
-													<p th:text="${artist.surname}+ ' ' +  ${artist.name}" /> <a
-													th:href="@{/admin/showArtist(id=${artist.id})}"> view profile</a>
+													<p th:text="${artist.surname}+ ' ' +  ${artist.name}" /><a
+													th:href="@{/admin/showArtist(id=${artist.id})}"
+													class="btn btn-default">Detail</a> <a
+													th:href="@{/admin/deleteArtist(id=${artist.id})}"
+													class="btn btn-danger">Delete </a> 
 												</li>
 											</th:block>
 										</ul>

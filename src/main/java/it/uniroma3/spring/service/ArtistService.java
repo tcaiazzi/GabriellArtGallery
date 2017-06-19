@@ -33,6 +33,11 @@ public class ArtistService{
 	}
 	
 	
+	@Transactional
+	public void delete(Long id){
+		this.artistRepository.delete(id);
+	}
+	
 	
 	
 	

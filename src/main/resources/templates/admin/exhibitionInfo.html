@@ -19,11 +19,9 @@
 </head>
 <body>
 	<div id="wrapper">
-		 <div th:replace="fragments/header :: header-admin-top">
-		 </div>
+		<div th:replace="fragments/header :: header-admin-top"></div>
 		<!-- /. NAV TOP  -->
-		 <div th:replace="fragments/header :: header-admin">
-		 </div>
+		<div th:replace="fragments/header :: header-admin"></div>
 		<!-- /. NAV SIDE  -->
 		<div id="page-wrapper">
 			<div id="page-inner">
@@ -44,32 +42,41 @@
 							<div class="row">
 								<div class="panel-body">
 									<div class="col-md-12">
-										<h3></h3>
+										<a
+											th:href="@{/admin/exhibitionsList}" class="btn btn-primary">Exhibitions</a>
+											<a th:href="@{/admin/deleteExhibition(id=${exhibition.id})}"
+											class="btn btn-danger">Delete </a> 
+											<p></p>
 										<ul class="list-group">
 											<li class="list-group-item"><p
 													th:text="'Name: ' + ${exhibition.name}" /></li>
 											<li class="list-group-item">
-													<p th:text="'Url: ' + ${exhibition.url}" />
-												<img th:src="${exhibition.url}"></img></li>
+												<p th:text="'Url: ' + ${exhibition.url}" /> <img
+												th:src="${exhibition.url}"></img>
+											</li>
 
 										</ul>
 
 
 										<ul>
-											<h6>Exhibition's Room</h6>
-											<li class="list-group-item" th:each="room : ${exhibition.rooms}">
-												<p th:text="${room.name}" /> <a
+											<h4>Exhibition's Room</h4>
+											<li class="list-group-item"
+												th:each="room : ${exhibition.rooms}">
+												<p th:text="${room.name}" /> <a class="btn btn-default"
 												th:href="@{/admin/showRoom(id=${room.id})}">view room</a>
 											</li>
-											
-											<h6>Reservations</h6>
-											<li class="list-group-item" th:each="reservation : ${reservations}">
-												<p th:text="${reservation.username}" /> 
+
+											<h4>Reservations</h4>
+											<li class="list-group-item"
+												th:each="reservation : ${reservations}">
+												<p th:text="${reservation.username}" />
 											</li>
-											
-											
+
+
+
 										</ul>
 
+										
 
 
 									</div>

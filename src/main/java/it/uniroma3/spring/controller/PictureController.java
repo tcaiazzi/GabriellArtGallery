@@ -60,7 +60,7 @@ public class PictureController {
 		return "admin/pictureInfo";
 	}
 	
-	@GetMapping("/showPicture")
+	@GetMapping("/admin/showPicture")
 	public String showPicture(Model model,WebRequest request){
 		
 		/*setting picture to show*/
@@ -69,6 +69,18 @@ public class PictureController {
 		model.addAttribute(pic);
 		
 		return "admin/pictureInfo";
+
+	}
+	
+	
+	@GetMapping("/admin/deletePicture")
+	public String deletePicture(WebRequest request){
+		
+		/*setting picture to show*/
+		Long id = Long.parseLong(request.getParameter("id"));
+		pictureService.deletePicture(id);
+		
+		return "admin/picturesList";
 
 	}
 

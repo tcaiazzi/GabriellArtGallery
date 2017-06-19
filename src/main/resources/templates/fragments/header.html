@@ -30,12 +30,27 @@
 						<li></li>
 
 					</ul>
+					<div sec:authorize="hasAuthority('USER')">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#about">About us</a></li>
+							<li><a href="#contact">Contact</a></li>
+
+							<li ><a href="/user/profile"> Logged in as: <span
+									ng-bind="home.user"></span> <span class="sr-only">(current)</span></a></li>
+							<li><form th:action="@{/logout}" method="post">
+									<input type="submit" value="Sign Out" />
+								</form></li>
+
+						</ul>
+
+					</div>
+					
 					<div sec:authorize="hasAuthority('ROLE_USER')">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="#about">About us</a></li>
 							<li><a href="#contact">Contact</a></li>
 
-							<li class="active"><a href="/profile"> Logged in as: <span
+							<li ><a href="/"> Logged in as: <span
 									ng-bind="home.user"></span> <span class="sr-only">(current)</span></a></li>
 							<li><form th:action="@{/logout}" method="post">
 									<input type="submit" value="Sign Out" />
@@ -49,9 +64,9 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="#about">About us</a></li>
 							<li><a href="#contact">Contact</a></li>
-							<li class="active"><a href="/profile"> Logged in as: <span
+							<li ><a href="/user/profile"> Logged in as: <span
 									ng-bind="home.user"></span> <span class="sr-only">(current)</span></a></li>
-							<li class="active"><a href="/admin"> Admin Panel </a></li>
+							<li ><a href="/admin"> Admin Panel </a></li>
 
 						</ul>
 					</div>
@@ -61,9 +76,9 @@
 							<li><a href="#about">About us</a></li>
 							<li><a href="#contact">Contact</a></li>
 
-							<li class="active"><a href="/login"> Login <span
+							<li ><a href="/login"> Login <span
 									class="sr-only">(current)</span></a></li>
-							<li class="active"><a href="/signUp"> Sign up <span
+							<li ><a href="/signUp"> Sign up <span
 									class="sr-only">(current)</span></a></li>
 						</ul>
 					</div>

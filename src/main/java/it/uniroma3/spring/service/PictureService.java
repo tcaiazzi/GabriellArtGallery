@@ -39,6 +39,14 @@ public class PictureService{
 
 		return (List<Picture>) this.pictureRepository.findAll();
 	}
+	
+	public void deletePicture(Long id){
+		this.pictureRepository.delete(id);
+	}
+	
+	public void deletePictures(List<Picture> pictures){
+		this.pictureRepository.delete(pictures);
+	}
 
 
 }
