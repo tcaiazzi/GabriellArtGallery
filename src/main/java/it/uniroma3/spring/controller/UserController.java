@@ -30,7 +30,7 @@ public class UserController {
 
 	@GetMapping("/signUp")
 	public String showUserSignUp(User user){
-		return "user/userSignUptmp";
+		return "user/userSignUp";
 	}
 	
 	
@@ -39,7 +39,7 @@ public class UserController {
 			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			return "user/userSignUptmp";
+			return "user/userSignUp";
 		}
 		else {
 			
