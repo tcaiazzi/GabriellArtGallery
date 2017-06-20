@@ -32,49 +32,38 @@
 			<div th:replace="fragments/header :: header-home"></div>
 			<div id="page-inner">
 				<div class="container">
-					<div class="row" th:each="artist : ${artists}">
-						<div class="col-lg-3">
-							
-								<div id="artistImage">
-									<img class="img-responsive" th:src="${artist.url}"></img>
-								</div>
-						</div>
-						<div class="col-lg-3">
-							<div id="exhibitionTitleBg">
-								<div id="artistDescription">
-									<h2 th:text="${artist.name}+'  '+${artist.surname}"></h2>
-									<p th:text="${artist.description}"></p>
-									<!--<a th:href="@{/showArtist(id=${artist.id})}"> more info </a> -->
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div id="exhibitionTitleBg">
-								<div id="artistGrid">
-									<h4>Pictures</h4>
-									<div class="row">
-
-										<div class="col-xs-2 col-xs-offset-2"
-											th:each="picture : ${artist.pictures}">
-											<div id="artistGridElem">
-											<a th:href="@{/showPictureGag(id=${picture.id})}">
-												<img class="img-responsive" th:src="${picture.url}"></img>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
+					<div class="row">
+						<div class="col-md-4 col-md-offset-1">
+							<div id="pictureTitle">
+								<h1 th:text="${picture.title}"></h1></div>
+								<div id="pictureDescriptionBg">
+								<div id="pictureDescription">
+							<ul>
+								<li th:text="'Year: '+${picture.year}"></li>
+								<li th:text="'Medium: '+${picture.medium}"></li>
+								<li th:text="'Dimension: '+${picture.dimension}"></li>
+							</ul>
+							<p th:text="${picture.description}"/>
+							<a class="btn btn-danger" href="/artistsList"> Artists 
+							</a></div>
+							</div></div>
+						<div class="col-md-6">
+							<div id="pictureImage">
+								<img th:src="${picture.url}"></img>
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+					
+							
+					</div>
+					<div th:replace="fragments/footer :: footer-home"></div>
 				</div>
 			</div>
-
-			<div th:replace="fragments/footer :: footer-home"></div>
 		</div>
 	</div>
-
-
+</div>
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->

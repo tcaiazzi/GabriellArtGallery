@@ -103,10 +103,9 @@ public class ExhibitionController {
 	public String showExhibitionInfoGag(Exhibition exhibition,Model model,WebRequest request){
 		
 		Long id = Long.parseLong(request.getParameter("id"));
-		Exhibition ex = exhibitionService.find(id);
-		model.addAttribute(ex);
-		List<Room> rooms = roomService.findAll();
-		model.addAttribute("rooms", rooms);
+	 exhibition = exhibitionService.find(id);
+		model.addAttribute(exhibition);
+		
 		return "exhibitionInfoGag";
 	}
 	

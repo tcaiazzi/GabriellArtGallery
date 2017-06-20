@@ -52,9 +52,17 @@ public class PictureController {
 			picture.setUrl("../img/picture/"+picture.getUrl());
 		
 
-
+			
+			
 			model.addAttribute(picture);
 			pictureService.add(picture); 
+			
+			System.out.println("----id-artista----"+picture.getArtist().getId());
+			Artist a = artistService.find(picture.getArtist().getId());
+			a.getPictures().add(picture);
+			artistService.add(a);
+			
+			System.out.println("----pictures----"+a.getPictures());
 			
 
 		return "admin/pictureInfo";
@@ -69,6 +77,18 @@ public class PictureController {
 		model.addAttribute(pic);
 		
 		return "admin/pictureInfo";
+
+	}
+	
+	@GetMapping("/showPictureGag")
+	public String showPictureGag(Model model,WebRequest request){
+		
+		/*setting picture to show*/
+		Long id = Long.parseLong(request.getParameter("id"));
+		Picture picture = pictureService.find(id);
+		model.addAttribute(picture);
+		
+		return "pictureInfoGag";
 
 	}
 

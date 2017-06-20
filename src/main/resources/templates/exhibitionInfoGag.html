@@ -29,35 +29,51 @@
 	<div class="wrapper">
 		<div class="bg">
 			<!-- Fixed navbar -->
-			<div th:replace="fragments/header :: header-home">
-			 </div>
+			<div th:replace="fragments/header :: header-home"></div>
 			<div id="page-inner">
 				<div class="container">
-					<div class="row" th:each="exhibition : ${exhibitions}">
-						<div class="col-lg-8">
-							<section class="panelExhibition" id="about">
-								<img class="exhibition img-responsive" th:src="${exhibition.url}"></img>
-							</section>
+					<div class="row">
+					
+						<div class="col-md-4">
+						<div id="exhibitionTitleBg">
+							<div id="exhibitionTitle">
+								<h6 th:text="${exhibition.name}"></h6>
+							</div>
+							</div>
 						</div>
-						<div class="col-lg-4">
+						<div class="col-md-8">
+							<div id="exhibitionDescription">
+							<h4>Description</h4>
+							<p th:text="${exhibition.description}"/>
+							
+							</div>
+						</div>
+					</div>
+					<div class="row">
+					<div class="col-md-4">
+					<div id="exhibitionDescriptionBis">
+							<p th:text="'Start Date: '+${exhibition.startDate}"/>
+							<hr></hr>
+							<p th:text="'End Date: '+${exhibition.endDate}"/>
+							</div>
+					
+					</div>
+						<div class="col-md-8">
+						<div id="exhibitionFlyer">
+							<img class="img-responsive" th:src="${exhibition.url}"></img>
+						</div>
+								
+						</div>
 						
-							<section class="panelExhibitionDesc" id="about">
-								<h2 th:text="${exhibition.name}"></h2>
-								<hr></hr>
-								<p th:text="${exhibition.description}" />
-								<a th:href="@{/showExhibition(id=${exhibition.id}, name=${exhibition.name})}"> 
-									<button class="btn btn-danger"> More info</button></a>
-							</section>
-						</div>
 					</div>
 				</div>
 			</div>
+		
 
-			<div th:replace="fragments/footer :: footer-home"></div>
-		</div>
+		<div th:replace="fragments/footer :: footer-home"></div>
 	</div>
 
-
+</div>
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -72,7 +88,7 @@
 		// ]]>
 	</script>
 	<script src="js/bootstrap.min.js"></script>
-	
+
 	<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
 	<script type="text/javascript">
     angular.module("app", [])

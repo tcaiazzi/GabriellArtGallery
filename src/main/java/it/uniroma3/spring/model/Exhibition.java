@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Exhibition {
+public class Exhibition implements Comparable<Exhibition>{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -107,6 +107,11 @@ public class Exhibition {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	@Override
+	public int compareTo(Exhibition that) {
+		return this.getStartDate().compareTo(that.getStartDate());
 	}
 	
 
