@@ -35,9 +35,23 @@ public class PictureService{
 
 	}
 	
+	@Transactional
+	public void deletePicsByArtist(Artist a){
+		this.pictureRepository.delete(this.pictureRepository.findByArtist(a));
+
+	}
+	@Transactional
 	public List<Picture> getAll() {
 
 		return (List<Picture>) this.pictureRepository.findAll();
+	}
+	@Transactional
+	public void deletePicture(Long id){
+		this.pictureRepository.delete(id);
+	}
+	@Transactional
+	public void deletePictures(List<Picture> pictures){
+		this.pictureRepository.delete(pictures);
 	}
 
 

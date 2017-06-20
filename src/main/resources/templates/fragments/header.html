@@ -29,12 +29,27 @@
 						<li></li>
 
 					</ul>
+					<div sec:authorize="hasAuthority('USER')">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#about">About us</a></li>
+							<li><a href="#contact">Contact</a></li>
+
+							<li ><a href="/user/profile"> Logged in as: <span
+									ng-bind="home.user"></span> <span class="sr-only">(current)</span></a></li>
+							<li><form th:action="@{/logout}" method="post">
+									<input type="submit" value="Sign Out" />
+								</form></li>
+
+						</ul>
+
+					</div>
+					
 					<div sec:authorize="hasAuthority('ROLE_USER')">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="#footer-home">About us</a></li>
 							<li><a href="#footer-home">Contact</a></li>
 
-							<li class="active"><a href="/profile"> Logged in as: <span
+							<li ><a href="/"> Logged in as: <span
 									ng-bind="home.user"></span> <span class="sr-only">(current)</span></a></li>
 							<li><form th:action="@{/logout}" method="post">
 									<input class="btn btn-info singOut" type="submit" value="Sign Out" />
@@ -48,9 +63,9 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="#footer-home">About us</a></li>
 							<li><a href="#footer-home">Contact</a></li>
-							<li class="active"><a href="/profile"> Logged in as: <span
-									ng-bind="home.user"></span> <span class="sr-only">(current)</span></a></li>
-							<li class="active"><a href="/admin"> Admin Panel </a></li>
+							<li ><a href="/user/profile"> Logged in as: 
+							<span ng-bind="home.user"></span> <span class="sr-only">(current)</span></a></li>
+							<li ><a href="/admin"> Admin Panel </a></li>
 
 						</ul>
 					</div>
@@ -60,9 +75,9 @@
 							<li><a href="#footer-home">About us</a></li>
 							<li><a href="#footer-home">Contact</a></li>
 
-							<li class="active"><a href="/login"> Login <span
+							<li ><a href="/login"> Login <span
 									class="sr-only">(current)</span></a></li>
-							<li class="active"><a href="/signUp"> Sign up <span
+							<li ><a href="/signUp"> Sign up <span
 									class="sr-only">(current)</span></a></li>
 						</ul>
 					</div>
@@ -90,6 +105,8 @@
 								Picture</a></li>
 						<li><a href="/admin/exhibition"><i
 								class="fa fa-edit fa-3x"></i> Exhibition </a></li>
+								<li><a href="/admin/room"><i
+								class="fa fa-edit fa-3x"></i> room </a></li>
 
 						<li><a href="/admin/profile"><i
 								class="fa fa-square-o fa-3x"></i> Profile</a></li>
@@ -113,7 +130,10 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="/admin">
-					<div id="logo">GaG admin</div>
+					<div>GAG Admin</div>
+				</a>
+				<a class="navbar-brand navbar-brand-2" href="/">
+					<div>GAG Home</div>
 				</a>
 			</div>
 

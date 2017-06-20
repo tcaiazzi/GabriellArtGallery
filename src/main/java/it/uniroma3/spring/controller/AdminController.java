@@ -1,6 +1,7 @@
 package it.uniroma3.spring.controller;
 
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.context.request.WebRequest;
 
 import it.uniroma3.spring.model.Permission;
 import it.uniroma3.spring.model.User;
@@ -55,15 +57,46 @@ public class AdminController {
 			
 			
 		}
-		return "userInfo";
+		return "admin/adminInfo";
 	}
 	
 	@GetMapping("/admin/users")
 	public String showUsersList(Model model){
 		List<Permission> permissions = this.permissionService.findAllUsers();
+		System.out.println(permissions);
 		model.addAttribute("permissions", permissions);
 		return "admin/usersList";
 		
+	}
+	
+	@GetMapping("/admin/userInfoAdmin")
+	public String showUserInfoAdmin(Model model, WebRequest request){
+		Long id = Long.parseLong(request.getParameter("id"));
+		User user = this.userService.findUserById(id);
+		model.addAttribute("user", user);
+		return "admin/userInfoAdmin";
+		
+	}
+	
+	@GetMapping("/admin/deleteUser")
+	public String deleteUser(Model model, WebRequest request){
+		Long userId = Long.parseLong(request.getParameter("user_id"));
+		Long permissionId = Long.parseLong(request.getParameter("permission_id"));
+		this.userService.deleteUser(userId);
+		this.permissionService.deletePermission(permissionId);
+		return "admin/usersList";
+		
+	}
+	
+	
+	@GetMapping("/admin/profile")
+	public String showUserProfile(Principal principal, Model model){
+		if(principal!=null){
+			User user = this.userService.findByUsername(principal.getName());
+			model.addAttribute("user", user);
+		}
+		return "admin/adminProfile";
+
 	}
 
 	

@@ -14,6 +14,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.List;
 import it.uniroma3.spring.model.Artist;
 import it.uniroma3.spring.model.Picture;
+import it.uniroma3.spring.repository.ArtistRepository;
 import it.uniroma3.spring.service.ArtistService;
 import it.uniroma3.spring.service.PictureService;
 
@@ -42,12 +43,8 @@ public class ArtistController {
 		Long id = Long.parseLong(request.getParameter("id"));
 		Artist art = artistService.find(id);
 		model.addAttribute(art);
-		/*setting artist's picture list if exist*/
-		if(pictureService.findPicsByArtist(art)!=null){
-		List<Picture> pictures = pictureService.findPicsByArtist(art);
-		model.addAttribute("pictures", pictures);
-		}
-		return "artistInfo";
+		
+		return "admin/artistInfo";
 	}
 	
 	@PostMapping("/admin/artist")
@@ -83,7 +80,15 @@ public class ArtistController {
 		return "artistsListGag";
 	}
 	
-	
-	
+	@GetMapping("admin/deleteArtist")
+	public String deleteArtist(WebRequest request){
+		Long id = Long.parseLong(request.getParameter("id"));
+		Artist a = this.artistService.find(id);
+		pictureService.deletePicsByArtist(a);
+		artistService.delete(id);
+		
+		return "admin/artistsList";
+		
+	}
 
 }

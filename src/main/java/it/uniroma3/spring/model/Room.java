@@ -1,7 +1,9 @@
 package it.uniroma3.spring.model;
 
 
+import java.util.List;
 import java.util.Map;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+
 
 @Entity
 public class Room {
@@ -19,8 +23,8 @@ public class Room {
 	private Long id;
 	private String name; 
 	private String description;
-	@OneToMany
-	private Map<String,Picture> pictures;
+	@OneToMany(mappedBy="room")
+	private List<Picture> pictures;
 	
 	public Room() {
 		// TODO Auto-generated constructor stub
@@ -50,14 +54,15 @@ public class Room {
 		this.description = description;
 	}
 
-	public Map<String, Picture> getQuadri() {
+	public List<Picture> getPictures() {
 		return pictures;
 	}
 
-	public void setQuadri(Map<String, Picture> paintings) {
-		this.pictures = paintings;
+	public void setPictures(List<Picture> pictures) {
+		this.pictures = pictures;
 	}
 
+	
 	
 
 }

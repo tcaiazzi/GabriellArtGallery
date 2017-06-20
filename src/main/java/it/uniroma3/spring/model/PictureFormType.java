@@ -1,19 +1,15 @@
 package it.uniroma3.spring.model;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-@Entity
-public class Picture {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+public class PictureFormType {
+	
 	@NotNull
 	@Size(min=1)
 	private String title;
@@ -35,22 +31,12 @@ public class Picture {
 	private String url;
 
 	
-	
-	@ManyToOne
-	private Room room;
 
 	@ManyToOne
 	private Artist artist;
-	public Picture() {
-	}
+	
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 
 	public String getTitle() {
 		return title;
@@ -107,18 +93,6 @@ public class Picture {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public Room getRoom() {
-		return room;
-	}
-
-	public void setRoom(Room room) {
-		this.room = room;
-	}
-
-
-
-
 
 
 }

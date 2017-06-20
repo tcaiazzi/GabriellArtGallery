@@ -10,4 +10,6 @@ public interface PermissionRepository  extends CrudRepository<Permission, Long>{
 	List<Permission> findAll();
 	
 	List<Permission> findByRole(String role);
+	
+	
 }

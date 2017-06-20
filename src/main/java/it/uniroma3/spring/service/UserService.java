@@ -30,8 +30,8 @@ public class UserService {
 		user.setEnabled(false);
 		this.userRepository.save(user);
 		Permission permission = new Permission(user.getUsername(), user.getId(), "ADMIN"); /**correzione**/
+		/*Permission permission = new Permission(user.getUsername(), user.getId(), "USER");*/
 		permissionRepository.save(permission);
-
 
 	}
 
@@ -45,11 +45,13 @@ public class UserService {
 
 
 	}
-
+	
+	@Transactional
 	public User findUserById(Long id){
 		return this.userRepository.findById(id);
 	}
 	
+	@Transactional
 	public List<User> findAll(){
 		return this.userRepository.findAll();
 	}
@@ -63,7 +65,15 @@ public class UserService {
 		this.userRepository.save(user);
 
 	}
-
-
+	
+	@Transactional
+	public User findByUsername(String username){
+		return this.userRepository.findByUsername(username);
+	}
+	
+	@Transactional
+	public void deleteUser(Long id){
+		this.userRepository.delete(id);
+	}
 
 }

@@ -125,11 +125,15 @@ public class ExhibitionController {
 	
 	
 	@GetMapping("/reservation/confirm")
-	public String showReservationConfirm(Principal principal, HttpServletRequest request){
+	public String showReservationConfirm(Principal principal, WebRequest request, Model model){
 		if(principal!=null){
 			Long ex_id = Long.parseLong(request.getParameter("id"));
 			String ex_name = request.getParameter("name");
+			Exhibition ex = exhibitionService.find(ex_id);
+			
+			model.addAttribute("exhibition", ex);
 			String username = principal.getName();
+			model.addAttribute("principal", principal);
 			Reservation reservation = new Reservation(ex_id, ex_name, username);
 			this.reservationService.add(reservation);
 			

@@ -32,62 +32,40 @@
 						<h5>Welcome, Love to see you back.</h5>
 					</div>
 				</div>
-				<!-- /. ROW  -->
-				<hr />
+
+				<a
+					th:href="@{/admin/users}"
+					class="btn btn-primary">Users List </a>
+
 				<div class="row">
-					<a href="https://www.gmail.com" target="_blank">
-						<div class="col-md-6 col-sm-12 col-xs-12">
-							<div class="panel panel-back noti-box">
-								<span class="icon-box bg-color-red set-icon"> <i
-									class="fa fa-envelope-o"></i>
-								</span>
-								<div class="text-box">
-									<p class="main-text">Mail</p>
-									<p class="text-muted">contact GAG's users</p>
+					<table class="table table-admin-information">
+						<caption>
+							<strong> User info: </strong>
+						</caption>
+						<tbody>
 
-								</div>
-							</div>
-						</div>
-					</a> <a href="/admin/users">
-						<div class="col-md-6 col-sm-12 col-xs-12">
-							<div class="panel panel-back noti-box">
-								<span class="icon-box bg-color-green set-icon"> <i
-									class="fa fa-user"></i>
-								</span>
-								<div class="text-box">
-									<p class="main-text">Users</p>
-									<p class="text-muted">manage GAG users</p>
-								</div>
-							</div>
-						</div>
-					</a> <a href="/admin/room">
-						<div class="col-md-6 col-sm-12 col-xs-12 ">
-							<div class="panel panel-back noti-box">
-								<span class="icon-box bg-color-blue set-icon"> <i
-									class="fa fa-cog"></i>
-								</span>
-								<div class="text-box">
-									<p class="main-text">Room</p>
-									<p class="text-muted">Set or Manage GAG's rooms</p>
-								</div>
-							</div>
-						</div>
-					</a> <a href="/admin/registration">
-						<div class="col-md-6 col-sm-12 col-xs-12">
-							<div class="panel panel-back noti-box">
-								<span class="icon-box bg-color-brown set-icon"> <i
-									class="fa fa-sign-in"></i>
-								</span>
-								<div class="text-box">
-									<p class="main-text">Set Admin</p>
-									<p class="text-muted">add new GAG's admin</p>
-								</div>
-							</div>
-						</div>
-					</a>
+							<tr>
+								<td><em>Name: </em></td>
+								<td th:text="${user.name}"></td>
+							</tr>
+							<tr>
+								<td><em>Surname: </em></td>
+								<td th:text="${user.surname}"></td>
+							</tr>
+							<tr>
+								<td><em>Email: </em></td>
+								<td th:text="${user.email}"></td>
+							</tr>
+
+
+							<tr>
+								<td><em>Username: </em></td>
+								<td th:text="${user.username}"></td>
+							</tr>
+						</tbody>
+					</table>
+
 				</div>
-
-
 
 
 
@@ -97,6 +75,7 @@
 		</div>
 	</div>
 	<!-- /. WRAPPER  -->
+
 
 
 

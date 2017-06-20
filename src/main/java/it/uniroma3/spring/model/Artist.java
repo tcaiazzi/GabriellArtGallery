@@ -2,9 +2,7 @@ package it.uniroma3.spring.model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +15,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.IndexColumn;
+
 
 @Entity
 public class Artist {
@@ -54,7 +52,8 @@ public class Artist {
 	@Temporal(TemporalType.DATE)
 	private Date deathDate;
 
-	@OneToMany(mappedBy = "artist" )
+
+	@OneToMany(mappedBy = "artist")
 	private List<Picture> pictures;
 
 	public Artist() {
@@ -110,7 +109,6 @@ public class Artist {
 	}
 
 
-	
 	public List<Picture> getPictures() {
 		return pictures;
 	}

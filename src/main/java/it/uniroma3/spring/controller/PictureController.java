@@ -17,8 +17,10 @@ import org.springframework.web.context.request.WebRequest;
 
 import it.uniroma3.spring.model.Artist;
 import it.uniroma3.spring.model.Picture;
+import it.uniroma3.spring.model.Room;
 import it.uniroma3.spring.service.ArtistService;
 import it.uniroma3.spring.service.PictureService;
+import it.uniroma3.spring.service.RoomService;
 
 @Controller
 public class PictureController {
@@ -29,12 +31,17 @@ public class PictureController {
 	@Autowired
 	private ArtistService artistService; 
 	
+	@Autowired
+	private RoomService roomService;
+	
 	
 
 	@GetMapping("/admin/picture")
 	public String showPictureInsert(Picture picture,Model model){
 		List<Artist> artists = artistService.getAll();
 		model.addAttribute("artists",artists);
+		List<Room> rooms = roomService.findAll();
+		model.addAttribute("rooms",rooms);
 		return "admin/pictureInsert";
 	}
 
@@ -44,7 +51,7 @@ public class PictureController {
 	@PostMapping("/admin/picture")
 	public String checkPictureInfo(@Valid @ModelAttribute Picture picture,
 			BindingResult bindingResult, Model model) {
-
+		
 		if (bindingResult.hasErrors()) {
 			return "admin/pictureInsert";
 		}
@@ -55,6 +62,7 @@ public class PictureController {
 			
 			
 			model.addAttribute(picture);
+			
 			pictureService.add(picture); 
 			
 			System.out.println("----id-artista----"+picture.getArtist().getId());
@@ -68,7 +76,7 @@ public class PictureController {
 		return "admin/pictureInfo";
 	}
 	
-	@GetMapping("/showPicture")
+	@GetMapping("/admin/showPicture")
 	public String showPicture(Model model,WebRequest request){
 		
 		/*setting picture to show*/
@@ -80,6 +88,7 @@ public class PictureController {
 
 	}
 	
+
 	@GetMapping("/showPictureGag")
 	public String showPictureGag(Model model,WebRequest request){
 		
@@ -89,6 +98,22 @@ public class PictureController {
 		model.addAttribute(picture);
 		
 		return "pictureInfoGag";
+	}
+	
+	@GetMapping("/admin/deletePicture")
+	public String deletePicture(Model model, WebRequest request){
+		
+		/*setting picture to show*/
+		Long id = Long.parseLong(request.getParameter("id"));
+		Picture picture = pictureService.find(id);
+		Room room = picture.getRoom();
+		room.getPictures().remove(picture);
+		roomService.add(room);
+		pictureService.deletePicture(id);
+		List<Picture> pictures = pictureService.getAll();
+		model.addAttribute("pictures", pictures);
+		return "admin/picturesList";
+
 
 	}
 

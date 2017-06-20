@@ -1,6 +1,8 @@
 package it.uniroma3.spring.controller;
 
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +20,13 @@ import it.uniroma3.spring.service.UserService;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private HtmlEmailSender emailSender;
-	
+
 	@Autowired
 	private HtmlMessagePreparator messagePreparator;
 
@@ -32,8 +34,8 @@ public class UserController {
 	public String showUserSignUp(User user){
 		return "user/userSignUp";
 	}
-	
-	
+
+
 	@PostMapping("/signUp")
 	public String checkUserInfo(@Valid @ModelAttribute User user, 
 			BindingResult bindingResult, Model model) {
@@ -42,25 +44,35 @@ public class UserController {
 			return "user/userSignUp";
 		}
 		else {
-			
+
 			model.addAttribute(user);
 			userService.addUser(user); 
 			emailSender.prepareEmail(user.getEmail(), "Welcome to GAG", messagePreparator.welcomeMessage(user.getId(), user.getUsername(), user.getPassword()));
-			
-			
-			
+
+
+
 		}
 		return "userInfo";
 	}
-	
+
 
 	@GetMapping("/signUp/confirm")
 	public String confirmRegistration(HttpServletRequest request){
 		this.userService.confirmUserAccount(Long.parseLong(request.getParameter("id")));
 		return "user/userAccountConfirmation";
 	}
-	
-	
 
-	
+	@GetMapping("/user/profile")
+	public String showUserProfile(Principal principal, Model model){
+		if(principal!=null){
+			User user = this.userService.findByUsername(principal.getName());
+			model.addAttribute("user", user);
+		}
+		return "user/userProfile";
+
+	}
+
+
+
+
 }

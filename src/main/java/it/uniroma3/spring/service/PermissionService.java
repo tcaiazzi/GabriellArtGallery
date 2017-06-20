@@ -30,6 +30,11 @@ public class PermissionService {
 	@Transactional
 	public List<Permission> findAllUsers() {
 		// TODO Auto-generated method stub
-		return permissionRepository.findByRole("ROLE_USER");
+		return permissionRepository.findByRole("USER");
+	}
+	
+	@Transactional
+	public void deletePermission(Long id){
+		this.permissionRepository.delete(id);
 	}
 }

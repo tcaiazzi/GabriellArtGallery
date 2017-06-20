@@ -20,12 +20,37 @@ public class RoomService {
 	public List<Room> findAll(){
 		return (List<Room>) this.roomRepository.findAll();
 	}
-	
 
 
 
+	@Transactional
 	public void add(Room room) {
 		this.roomRepository.save(room)		;
 	}
+
+
+
+	@Transactional
+	public void delete(Long id) {
+		this.roomRepository.delete(id);
+
+	}
+
+
+	@Transactional
+	public Room findRoom(Long id) {
+
+		return this.roomRepository.findOne(id);
+	}
+	
+
+	@Transactional
+	public Room findRoomByName(String name) {
+
+		return this.roomRepository.findByName(name);
+	}
+	
+	
+	
 
 }
