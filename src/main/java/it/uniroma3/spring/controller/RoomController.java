@@ -105,7 +105,7 @@ public class RoomController {
 			model.addAttribute(room);
 		roomService.add(room);
 
-		return "admin/roomInsert";
+		return "admin/roomInfo";
 	}
 
 
