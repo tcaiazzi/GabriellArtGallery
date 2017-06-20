@@ -39,26 +39,29 @@
 	<div class="wrapper">
 		<div class="bg">
 			<!-- Fixed navbar -->
-			<div th:replace="fragments/header :: header-home">
-			 </div>
+			<div th:replace="fragments/header :: header-home"></div>
 			<div id="page-inner">
 				<div class="container">
 					<div class="row" th:each="exhibition : ${exhibitions}">
 						<div class="col-lg-8">
 							<section class="panelExhibition" id="about">
-								<img class="exhibition img-responsive" th:src="${exhibition.url}"></img>
+								<img class="exhibition img-responsive"
+									th:src="${exhibition.url}"></img>
 							</section>
 						</div>
 						<div class="col-lg-4">
-						
+
 							<section class="panelExhibitionDesc" id="about">
 								<h2 th:text="${exhibition.name}"></h2>
 								<hr></hr>
 								<p th:text="${exhibition.description}" />
-								<a th:href="@{/showExhibition(id=${exhibition.id}, name=${exhibition.name})}"> 
-									<button class="btn btn-danger"> More info</button></a>
-									<a th:href="@{/reservation/confirm(id=${exhibition.id}, name=${exhibition.name})}"> 
-									<button class="btn btn-success"> Prenotati</button></a>
+								<a
+									th:href="@{/showExhibition(id=${exhibition.id}, name=${exhibition.name})}">
+									<button class="btn btn-danger">More info</button>
+								</a> <a
+									th:href="@{/reservation/confirm(id=${exhibition.id}, name=${exhibition.name})}">
+									<button class="btn btn-success">Prenotati</button>
+								</a>
 							</section>
 						</div>
 					</div>
@@ -84,31 +87,37 @@
 		// ]]>
 	</script>
 	<script src="js/bootstrap.min.js"></script>
-	
 	<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
 	<script type="text/javascript">
-    angular.module("app", [])
-        .config(function($httpProvider) {
-              $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-            }).controller("home", function($http, $location) {
-          var self = this;
-          $http.get("/user").success(function(data) {
-            if (data.userAuthentication) {
-              if(data.userAuthentication.details.name)
-                self.user = data.userAuthentication.details.name;
-              else
-                self.user = data.principal              
-            } else if(data.principal){
-              self.user = data.principal.username;              
-            }
-            
-            
-          }).error(function() {            
-            
-          });
-          
-        });
-  </script>
+		angular
+				.module("app", [])
+				.config(
+						function($httpProvider) {
+							$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+						})
+				.controller(
+						"home",
+						function($http, $location) {
+							var self = this;
+							$http
+									.get("/userinfo")
+									.success(
+											function(data) {
+												if (data.userAuthentication) {
+													if (data.userAuthentication.details.name)
+														self.user = data.userAuthentication.details.name;
+													else
+														self.user = data.principal
+												} else if (data.principal) {
+													self.user = data.principal.username;
+												}
+
+											}).error(function() {
+
+									});
+
+						});
+	</script>
 
 </body>
 </html>

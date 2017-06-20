@@ -152,10 +152,10 @@ public class ExhibitionController {
 			Long id = Long.parseLong(request.getParameter("ex_id"));
 			Exhibition exhibition = exhibitionService.find(id);
 			model.addAttribute("exhibition", exhibition);
-			String name = request.getParameter("name");
-			List<Reservation> reservations = reservationService.findReservationByExhibitionName(name);
+			List<Reservation> reservations = reservationService.findReservationByExhibitionName(exhibition.getName());
+			System.out.println("-------------------------------------------"+reservations);
 			model.addAttribute("reservations", reservations);
-		
+			
 		return "admin/exhibitionInfo";
 		
 	}

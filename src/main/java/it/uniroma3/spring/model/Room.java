@@ -2,9 +2,6 @@ package it.uniroma3.spring.model;
 
 
 import java.util.List;
-import java.util.Map;
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

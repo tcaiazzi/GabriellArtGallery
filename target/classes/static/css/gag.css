@@ -4,6 +4,10 @@
 // background-attachment: fixed;*/
 }
 
+section#gag-footer{
+	
+}
+
 #page-wrapper {
 	padding: 15px 15px;
 	min-height: 600px;
@@ -396,7 +400,7 @@ div#pictureTitle {
 	background-color:black;
 	color: white;
 	font-size: 20px;
-	height:100px;
+	height:100%;
 	opacity:0.90;
 	padding:10px;
 	padding-left:40px;
@@ -409,7 +413,7 @@ div#exhibitionTitleBg {
 	color: white;
 	font-size: 20px;
 	height:300px;
-	opacity:0.8;
+	opacity:0.9;
 	background-image:url("../img/paint.jpg")
 
 	
@@ -449,7 +453,7 @@ div#artistDescription {
 	font-size: 15px;
 	height:300px;
 	opacity:0.80;
-	padding:40px;
+	padding:10px;
 	
 	
 }

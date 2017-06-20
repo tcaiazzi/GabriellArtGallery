@@ -13,8 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.util.List;
 import it.uniroma3.spring.model.Artist;
-import it.uniroma3.spring.model.Picture;
-import it.uniroma3.spring.repository.ArtistRepository;
+
 import it.uniroma3.spring.service.ArtistService;
 import it.uniroma3.spring.service.PictureService;
 

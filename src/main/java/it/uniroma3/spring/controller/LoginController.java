@@ -1,22 +1,20 @@
 package it.uniroma3.spring.controller;
 
 import java.security.Principal;
-import java.util.List;
-import java.util.Set;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import it.uniroma3.spring.model.Exhibition;
-import it.uniroma3.spring.service.ExhibitionService;
+
 
 
 
 @Controller
 public class LoginController {
 	
-	private ExhibitionService exhibitionService;
+	
 
 	 // Login form
 	  @RequestMapping("/login")

@@ -22,7 +22,7 @@ public class RoomController {
 
 	@Autowired
 	private RoomService roomService;
-	
+
 	@Autowired
 	private PictureService pictureService;
 
@@ -34,7 +34,7 @@ public class RoomController {
 
 		return "admin/roomInsert";
 	}
-	
+
 	@GetMapping("/admin/roomInfo")
 	public String showRoomInfo(Model model, WebRequest request){
 		Long id = Long.parseLong(request.getParameter("id"));
@@ -45,24 +45,25 @@ public class RoomController {
 		model.addAttribute("pictures", pictures);
 		return "admin/roomInfo";
 	}
-	
-	
+
+
 	@GetMapping("/admin/roomsList")
 	public String showRoomsList(Model model){
 		List<Room> rooms = this.roomService.findAll();
 		model.addAttribute("rooms", rooms);
 		return "admin/roomsList";
 	}
-	
-	
+
+
 	@GetMapping("/admin/deleteRoom")
-	public String deleteRoom(WebRequest request){
+	public String deleteRoom(WebRequest request, Model model){
 		Long id = Long.parseLong(request.getParameter("id"));
 		this.roomService.delete(id);
-		
+		List<Room> rooms = this.roomService.findAll();
+		model.addAttribute("rooms", rooms);
 		return "admin/roomsList";
 	}
-	
+
 	@PostMapping("/admin/insertRoomPicture")
 	public String insertRoomPicture(Model model, @ModelAttribute Room room){
 		Room newRoom = this.roomService.findRoom(room.getId());
@@ -78,7 +79,7 @@ public class RoomController {
 		model.addAttribute("pictures", pictures);
 		return "admin/roomInfo";
 	}
-	
+
 	@GetMapping("/admin/removeRoomPicture")
 	public String removeRoomPicture(Model model, WebRequest request){
 		Room room = this.roomService.findRoom(Long.parseLong(request.getParameter("room_id")));
@@ -92,7 +93,7 @@ public class RoomController {
 		model.addAttribute("pictures", pictures);
 		return "admin/roomInfo";
 	}
-	
+
 
 	@PostMapping("/admin/room")
 	public String checkRoomInfo(@Valid @ModelAttribute Room room,
@@ -104,7 +105,9 @@ public class RoomController {
 		else 
 			model.addAttribute(room);
 		roomService.add(room);
+		List<Picture> pictures = this.pictureService.getAll();
 
+		model.addAttribute("pictures", pictures);
 		return "admin/roomInfo";
 	}
 
