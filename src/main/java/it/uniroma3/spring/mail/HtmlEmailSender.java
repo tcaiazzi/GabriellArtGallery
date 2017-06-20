@@ -65,8 +65,8 @@ public class HtmlEmailSender {
 		// SMTP server information
 		String host = "smtp.gmail.com";
 		String port = "587";
-		String mailFrom = "tommasocaiazzi@gmail.com";
-		String password = "qwertytommaso";
+		String mailFrom = "inginfcondivisioneappunti@gmail.com";
+		String password = "ingegneriainformatica";
 		HtmlEmailSender mailer = new HtmlEmailSender();
 		try {
 			mailer.sendHtmlEmail(host, port, mailFrom, password, mailTo,
