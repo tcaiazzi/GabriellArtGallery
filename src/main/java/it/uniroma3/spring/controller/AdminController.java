@@ -78,6 +78,17 @@ public class AdminController {
 		
 	}
 	
+	
+	@GetMapping("/admin/userInfoAdminByUsername")
+	public String showUserInfoAdminByUsername(Model model, WebRequest request){
+		String username =request.getParameter("username");
+		User user = this.userService.findByUsername(username);
+		System.out.println("-------------"+user.getName());
+		model.addAttribute("user", user);
+		return "admin/userInfoAdmin";
+		
+	}
+	
 	@GetMapping("/admin/deleteUser")
 	public String deleteUser(Model model, WebRequest request){
 		Long userId = Long.parseLong(request.getParameter("user_id"));

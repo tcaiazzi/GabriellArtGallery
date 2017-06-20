@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<<<<<<< HEAD
+<body>
+=======
+<!--  <<<<<<< HEAD
+<body>
+	<p> <a href="/picture">Insert painting</a> </p>
+	<br><hr><br>
+	<p> <a href="/artist">Insert artist</a> </p>
+	<br><hr><br>
+	<p> <a href="/artistsList">Artists list</a> </p>
+
+=======-->
+<body ng-app="app" ng-controller="home as home">
+	<h1>GabriellArtGallery</h1>
+	<h2>Login</h2>
+	<div class="container" ng-show="!home.authenticated">
+		<div>
+			With Facebook: <a href="/login/facebook">click here</a>
+		</div>
+		<div>
+			With Github: <a href="/login/github">click here</a>
+		</div>
+		<div>
+			With us:  <a href="/login">click here</a>
+		</div>
+		<div>
+			Admin panel:  <a href="/admin">click here</a>
+		</div>
+>>>>>>> branch 'develop' of https://github.com/tcaiazzi/GabriellArtGallery.git
+
+<<<<<<< HEAD
+=======
+	</div>
+	<h2>Sign Up</h2>
+	<div class="container" ng-show="!home.authenticated">
+		<div>
+			Register an account:  <a href="/signUp">click here</a>
+		</div>
+
+	</div>
+	<div class="container" ng-show="home.authenticated">
+		<div>
+			<a href="/picture">Insert picture</a>
+		</div>
+		<div>
+			<a href="/artist">Insert artist</a>
+		</div>
+		<div>
+
+			<a href="/exhibition">Insert exhibition</a>
+		</div>
+		<br>
+		<div>
+			<a href="/artistsList">Artists List</a>
+		</div>
+		<div>
+			<a href="/exhibitionList">Exhibition List</a>
+		</div>
+		<div>
+			<a href="/gag">Home</a>
+		</div>
+
+		<br>
+		<div>
+			<a href="/room">Insert Room</a>
+		</div>
+		<br>
+		<div>
+			Admin panel:  <a href="/admin">click here</a>
+		</div>
+		<br>
+		<div>
+			New Admin panel:  <a href="/newAdmin">click here</a>
+		</div>
+
+
+	<div class="container" ng-show="home.authenticated">
+		Logged in as: <span ng-bind="home.user"></span>
+		<div>
+			<button ng-click="home.logout()" class="btn btn-primary">Logout</button>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
+	<script type="text/javascript">
+		angular.module("app", []).controller("home", function($http) {
+			var self = this;
+			$http.get("/user").success(function(data) {
+				self.user = data.userAuthentication.details.name;
+				self.authenticated = true;
+			}).error(function() {
+				self.user = "N/A";
+				self.authenticated = false;
+			});
+			self.logout = function() {
+				$http.post('/logout', {}).success(function() {
+					self.authenticated = false;
+					$location.path("/");
+				}).error(function(data) {
+					console.log("Logout failed")
+					self.authenticated = false;
+				});
+			};
+		});
+	</script>
+>>>>>>> branch 'develop' of https://github.com/tcaiazzi/GabriellArtGallery.git
+</body>
+<<<<<<< HEAD
+</html>
+=======
+
+</html>
+>>>>>>> branch 'develop' of https://github.com/tcaiazzi/GabriellArtGallery.git

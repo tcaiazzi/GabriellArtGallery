@@ -72,6 +72,11 @@ public class ArtistController {
 	public String showArtistsList( Model model){
 		List<Artist> artists = artistService.getAll();
 		model.addAttribute("artists", artists);
+		System.out.println("------aaa-----");
+		
+		for(Artist a: artists){
+			System.out.println("------aaa-----"+a.getPictures());
+		}
 		return "artistsListGag";
 	}
 	

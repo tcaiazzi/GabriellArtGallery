@@ -2,10 +2,8 @@ package it.uniroma3.spring.model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,7 +42,6 @@ public class Artist {
 	@Size(min=1)
 	private String url;
 
-
 	
 
 	@NotNull
@@ -54,6 +51,7 @@ public class Artist {
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	private Date deathDate;
+
 
 	@OneToMany(mappedBy = "artist")
 	private List<Picture> pictures;
@@ -110,8 +108,7 @@ public class Artist {
 		this.deathDate = deathDate;
 	}
 
-	
-	
+
 	public List<Picture> getPictures() {
 		return pictures;
 	}

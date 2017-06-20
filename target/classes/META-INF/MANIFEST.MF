@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: Oauth
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: tommaso
+Implementation-Vendor-Id: it.uniroma3
+Build-Jdk: 1.8.0_20
+Implementation-URL: http://projects.spring.io/spring-boot/Oauth/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

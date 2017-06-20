@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GabriellArtGallery-Admin</title>
+<!-- BOOTSTRAP STYLES-->
+<link href="../css/bootstrap.css" rel="stylesheet" />
+<!-- FONTAWESOME STYLES-->
+<link href="../css/font-awesome.css" rel="stylesheet" />
+<!-- MORRIS CHART STYLES-->
+<link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+<!-- CUSTOM STYLES-->
+<link href="../css/custom.css" rel="stylesheet" type="text/css" />
+<!-- GOOGLE FONTS-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans|Monoton'
+	rel='stylesheet' />
+</head>
+<body>
+	<div id="wrapper">
+
+		<div th:replace="fragments/header :: header-admin-top"></div>
+		<!-- /. NAV TOP  -->
+		<div th:replace="fragments/header :: header-admin"></div>
+		<!-- /. NAV SIDE  -->
+		<div id="page-wrapper">
+			<div id="page-inner">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>Admin Dashboard</h2>
+						<h5>Welcome, Love to see you back.</h5>
+					</div>
+				</div>
+					
+					<div class="row">
+							<table class="table table-admin-information">
+								<caption><strong> Admin profile: </strong> </caption>
+								<tbody>
+
+									<tr>
+										<td><em>Name: </em></td>
+										<td th:text="${user.name}"></td>
+									</tr>
+									<tr>
+										<td><em>Surname: </em></td>
+										<td th:text="${user.surname}"></td>
+									</tr>
+									<tr>
+										<td><em>Email: </em></td>
+										<td th:text="${user.email}"></td>
+									</tr>
+
+
+									<tr>
+										<td><em>Username: </em></td>
+										<td th:text="${user.username}"></td>
+									</tr>
+								</tbody>
+							</table>
+							
+						</div>
+
+
+
+				<!-- /. PAGE INNER  -->
+			</div>
+			<!-- /. PAGE WRAPPER  -->
+		</div>
+	</div>
+	<!-- /. WRAPPER  -->
+
+
+
+
+
+
+
+	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<!-- JQUERY SCRIPTS -->
+	<script src="../js/jquery-1.10.2.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script src="../js/bootstrap.min.js"></script>
+	<!-- METISMENU SCRIPTS -->
+	<script src="../js/jquery.metisMenu.js"></script>
+	<!-- MORRIS CHART SCRIPTS -->
+	<script src="..js/morris/raphael-2.1.0.min.js"></script>
+	<script src="../js/morris/morris.js"></script>
+	<!-- CUSTOM SCRIPTS -->
+	<script src="../js/custom.js"></script>
+
+
+</body>
+</html>

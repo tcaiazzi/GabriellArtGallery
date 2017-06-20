@@ -3,8 +3,6 @@ package it.uniroma3.spring.controller;
 
 import java.security.Principal;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,8 +85,6 @@ public class ExhibitionController {
 		Long id = Long.parseLong(request.getParameter("id"));
 		Exhibition exhibition = exhibitionService.find(id);
 		model.addAttribute("exhibition", exhibition);
-		System.out.println(exhibition.getRooms());
-		
 		String name = request.getParameter("name");
 		List<Reservation> reservations = reservationService.findReservationByExhibitionName(name);
 		model.addAttribute("reservations", reservations);
@@ -103,10 +99,9 @@ public class ExhibitionController {
 	public String showExhibitionInfoGag(Exhibition exhibition,Model model,WebRequest request){
 		
 		Long id = Long.parseLong(request.getParameter("id"));
-		Exhibition ex = exhibitionService.find(id);
-		model.addAttribute(ex);
-		List<Room> rooms = roomService.findAll();
-		model.addAttribute("rooms", rooms);
+	 exhibition = exhibitionService.find(id);
+		model.addAttribute(exhibition);
+		
 		return "exhibitionInfoGag";
 	}
 	
@@ -135,12 +130,33 @@ public class ExhibitionController {
 			model.addAttribute("exhibition", ex);
 			String username = principal.getName();
 			model.addAttribute("principal", principal);
+			try{
 			Reservation reservation = new Reservation(ex_id, ex_name, username);
 			this.reservationService.add(reservation);
-			
+			}catch(Exception e){
+				return "reservationConfirmError";
+				
+			}
 		}
 		
 		return "reservationConfirm";
+		
+	}
+	
+	
+	@GetMapping("admin/reservationDelete")
+	public String reservationDelete( WebRequest request, Model model){
+		
+			Long resId = Long.parseLong(request.getParameter("res_id"));
+			this.reservationService.delete(resId);
+			Long id = Long.parseLong(request.getParameter("ex_id"));
+			Exhibition exhibition = exhibitionService.find(id);
+			model.addAttribute("exhibition", exhibition);
+			String name = request.getParameter("name");
+			List<Reservation> reservations = reservationService.findReservationByExhibitionName(name);
+			model.addAttribute("reservations", reservations);
+		
+		return "admin/exhibitionInfo";
 		
 	}
 	

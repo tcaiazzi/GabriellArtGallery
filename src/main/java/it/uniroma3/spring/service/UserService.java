@@ -29,9 +29,9 @@ public class UserService {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setEnabled(false);
 		this.userRepository.save(user);
-		Permission permission = new Permission(user.getUsername(), user.getId(), "USER");
+		Permission permission = new Permission(user.getUsername(), user.getId(), "USER"); /**correzione**/
+		/*Permission permission = new Permission(user.getUsername(), user.getId(), "USER");*/
 		permissionRepository.save(permission);
-
 
 	}
 

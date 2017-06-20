@@ -20,8 +20,15 @@ public class ReservationService {
 		this.reservationRepository.save(reservation);
 	}
 	
+	@Transactional
 	public List<Reservation> findReservationByExhibitionName(String name){
 		return this.reservationRepository.findByExhibition(name);
+	}
+	
+	@Transactional
+	public void delete(Long id) {
+		this.reservationRepository.delete(id);
+		
 	}
 
 }

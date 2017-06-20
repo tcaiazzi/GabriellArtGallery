@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link rel="icon" href="../../favicon.ico" />
+
+<title>GAG | Exhibitions</title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet" />
+<link href="css/gag.css" rel="stylesheet" />
+
+
+
+<!-- Custom styles for this template -->
+<link href="css/navbar-fixed-top.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Monoton"
+	rel="stylesheet" />
+
+</head>
+
+<body ng-app="app" ng-controller="home as home">
+	<div class="wrapper">
+		<div class="bg">
+			<!-- Fixed navbar -->
+			<div th:replace="fragments/header :: header-home"></div>
+			<div id="page-inner">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-md-4">
+							<div id="exhibitionTitleBg">
+								<div id="exhibitionTitle">
+									<h6 th:text="${exhibition.name}"></h6>
+									<a
+									th:href="@{/reservation/confirm(id=${exhibition.id}, name=${exhibition.name})}">
+									<button class="btn btn-success btn-gag">Prenotati</button>
+								</a>
+								</div>
+								
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div id="exhibitionDescription">
+								<h4>Description</h4>
+								<p th:text="${exhibition.description}" />
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div id="exhibitionDescriptionBis">
+								<p th:text="'Start Date: '+${exhibition.startDate}" />
+								<hr></hr>
+								<p th:text="'End Date: '+${exhibition.endDate}" />
+							</div>
+
+						</div>
+						<div class="col-md-8">
+							<div id="exhibitionFlyer">
+								<img class="img-responsive" th:src="${exhibition.url}"></img>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+			<div th:replace="fragments/footer :: footer-home"></div>
+		</div>
+
+	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		// <![CDATA[
+		window.jQuery
+				|| document
+						.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>');
+		// ]]>
+	</script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/webjars/angularjs/angular.min.js"></script>
+	<script type="text/javascript">
+		angular
+				.module("app", [])
+				.config(
+						function($httpProvider) {
+							$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+						})
+				.controller(
+						"home",
+						function($http, $location) {
+							var self = this;
+							$http
+									.get("/user")
+									.success(
+											function(data) {
+												if (data.userAuthentication) {
+													if (data.userAuthentication.details.name)
+														self.user = data.userAuthentication.details.name;
+													else
+														self.user = data.principal
+												} else if (data.principal) {
+													self.user = data.principal.username;
+												}
+
+											}).error(function() {
+
+									});
+
+						});
+	</script>
+
+</body>
+</html>
