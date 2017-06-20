@@ -19,6 +19,7 @@
 </head>
 <body>
 	<div id="wrapper">
+
 		<div th:replace="fragments/header :: header-admin-top"></div>
 		<!-- /. NAV TOP  -->
 		<div th:replace="fragments/header :: header-admin"></div>
@@ -28,48 +29,59 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h2>Admin Dashboard</h2>
-						<h5>Manage GaG artist</h5>
+						<h5>Welcome, Love to see you back.</h5>
 					</div>
 				</div>
-				<!-- /. ROW  -->
-				<hr />
+
+				<a
+					th:href="@{/admin/users}"
+					class="btn btn-primary">Users List </a>
+
 				<div class="row">
+					<table class="table table-admin-information">
+						<caption>
+							<strong> User info: </strong>
+						</caption>
+						<tbody>
 
-					<div class="col-md-12">
-						<!-- Form Elements -->
-						<div class="panel panel-default">
-							<div class="panel-heading">Picture List</div>
-							<div class="row">
-								<div class="panel-body">
-									<div class="col-md-12">
-										<h3></h3>
-										<ul class="list-group">
-											<th:block th:object="${picture}">
-												<li class="list-group-item" th:each="picture : ${pictures}">
-													<p th:text="${picture.title}" /> <a
-													th:href="@{/admin/showPicture(id=${picture.id})}"
-													class="btn btn-default">Detail</a> <a
-													th:href="@{/admin/deletePicture(id=${picture.id})}"
-													class="btn btn-danger">Delete </a>
-												</li>
-
-											</th:block>
-										</ul>
+							<tr>
+								<td><em>Name: </em></td>
+								<td th:text="${user.name}"></td>
+							</tr>
+							<tr>
+								<td><em>Surname: </em></td>
+								<td th:text="${user.surname}"></td>
+							</tr>
+							<tr>
+								<td><em>Email: </em></td>
+								<td th:text="${user.email}"></td>
+							</tr>
 
 
+							<tr>
+								<td><em>Username: </em></td>
+								<td th:text="${user.username}"></td>
+							</tr>
+						</tbody>
+					</table>
 
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
 				</div>
-				<!-- /. PAGE WRAPPER  -->
+
+
+
+				<!-- /. PAGE INNER  -->
 			</div>
+			<!-- /. PAGE WRAPPER  -->
 		</div>
 	</div>
 	<!-- /. WRAPPER  -->
+
+
+
+
+
+
+
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script src="../js/jquery-1.10.2.js"></script>
@@ -78,10 +90,11 @@
 	<!-- METISMENU SCRIPTS -->
 	<script src="../js/jquery.metisMenu.js"></script>
 	<!-- MORRIS CHART SCRIPTS -->
-	<script src="../js/morris/raphael-2.1.0.min.js"></script>
+	<script src="..js/morris/raphael-2.1.0.min.js"></script>
 	<script src="../js/morris/morris.js"></script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="../js/custom.js"></script>
+
+
 </body>
 </html>
-

@@ -4,12 +4,15 @@ package it.uniroma3.spring.model;
 import java.util.List;
 import java.util.Map;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+
 
 @Entity
 public class Room {
@@ -20,7 +23,7 @@ public class Room {
 	private Long id;
 	private String name; 
 	private String description;
-	@OneToMany
+	@OneToMany(mappedBy="room")
 	private List<Picture> pictures;
 	
 	public Room() {

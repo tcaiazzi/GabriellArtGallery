@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
@@ -37,46 +38,24 @@
 
 					<div class="col-md-12">
 						<!-- Form Elements -->
-						<div class="panel panel-success">
-							<div class="panel-heading">Exhibition Info</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">Rooms Info</div>
 							<div class="row">
 								<div class="panel-body">
 									<div class="col-md-12">
-										<a
-											th:href="@{/admin/exhibitionsList}" class="btn btn-primary">Exhibitions</a>
-											<a th:href="@{/admin/deleteExhibition(id=${exhibition.id})}"
-											class="btn btn-danger">Delete </a> 
-											<p></p>
+										<h3></h3>
 										<ul class="list-group">
-											<li class="list-group-item"><p
-													th:text="'Name: ' + ${exhibition.name}" /></li>
-											<li class="list-group-item">
-												<p th:text="'Url: ' + ${exhibition.url}" /> <img
-												th:src="${exhibition.url}"></img>
-											</li>
-
+											<th:block th:object="${room}">
+												<li class="list-group-item" th:each="room : ${rooms}">
+													<p th:text="${room.name}+ ':  ' +  ${room.description}" /><a
+													th:href="@{/admin/roomInfo(id=${room.id})}"
+													class="btn btn-default">Detail</a> <a
+													th:href="@{/admin/deleteRoom(id=${room.id})}"
+													class="btn btn-danger">Delete </a> 
+												</li>
+											</th:block>
 										</ul>
 
-
-										<ul>
-											<h4>Exhibition's Room</h4>
-											<li class="list-group-item"
-												th:each="room : ${exhibition.rooms}">
-												<p th:text="${room.name}" /> <a class="btn btn-default"
-												th:href="@{/admin/showRoom(id=${room.id})}">view room</a>
-											</li>
-
-											<h4>Reservations</h4>
-											<li class="list-group-item"
-												th:each="reservation : ${reservations}">
-												<p th:text="${reservation.username}" />
-											</li>
-
-
-
-										</ul>
-
-										
 
 
 									</div>
@@ -85,9 +64,8 @@
 							</div>
 						</div>
 					</div>
-
-					<!-- /. PAGE WRAPPER  -->
 				</div>
+				<!-- /. PAGE WRAPPER  -->
 			</div>
 		</div>
 	</div>

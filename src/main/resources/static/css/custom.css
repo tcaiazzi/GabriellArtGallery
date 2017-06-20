@@ -457,6 +457,10 @@ p {
 		font-size: 20px;
 		font-family: Monoton;
 	}
+	.navbar-brand.navbar-brand-2 {
+    background:#333;
+}
+	
 
 	/*ACCOUNT CONFIRMATION*/
 	.welcome-gag {

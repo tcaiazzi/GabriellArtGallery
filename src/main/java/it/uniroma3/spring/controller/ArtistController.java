@@ -78,6 +78,8 @@ public class ArtistController {
 	@GetMapping("admin/deleteArtist")
 	public String deleteArtist(WebRequest request){
 		Long id = Long.parseLong(request.getParameter("id"));
+		Artist a = this.artistService.find(id);
+		pictureService.deletePicsByArtist(a);
 		artistService.delete(id);
 		
 		return "admin/artistsList";

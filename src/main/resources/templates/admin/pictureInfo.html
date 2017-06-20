@@ -12,10 +12,10 @@
 <!-- MORRIS CHART STYLES-->
 <link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
 <!-- CUSTOM STYLES-->
-<link href="../css/custom.css" rel="stylesheet" />
+<link href="../css/custom.css" rel="stylesheet" type="text/css" />
 <!-- GOOGLE FONTS-->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans'
-	rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans|Monoton'
+	rel='stylesheet' />
 </head>
 <body>
 	<div id="wrapper">
@@ -68,6 +68,7 @@
 												th:src="${picture.url}"></img></li>
 											<li class="list-group-item"><p
 													th:text="'Description: ' + ${picture.description}" /></li>
+													
 										</ul>
 
 										<a th:href="@{/admin/deletePicture(id=${picture.id})}"
